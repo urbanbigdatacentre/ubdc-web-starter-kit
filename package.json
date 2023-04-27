@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@mui/material": "^5.12.2",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
@@ -17,6 +20,10 @@
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4"
-  }
+    "typescript": "5.0.4",
+    "yarn": "^1.22.19"
+  },
+  "description": "Starter kit - combining Next.js with web technologies such as MaterialUI - Nhost (Hasura, GraphQL) - Apollo Client - to make beginning a new frontend project, more simple.",
+  "author": "andymithamclarke <andrew.c.clarke@glasgow.ac.uk>",
+  "license": "MIT"
 }
