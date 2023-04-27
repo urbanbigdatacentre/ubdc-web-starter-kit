@@ -1,11 +1,14 @@
-// Custom theme for the app
-
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#1a237e',
+            main: '#556cd6',
+        },
+    },
+    typography: {
+        allVariants: {
+            fontFamily: `Poppins !important`,
         },
     }
 });
