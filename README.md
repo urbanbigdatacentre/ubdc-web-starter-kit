@@ -95,7 +95,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. Without any authentication, you will be redirected to the login page.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/sign-in.tsx`. The page auto-updates as you edit the file.
 
 
 

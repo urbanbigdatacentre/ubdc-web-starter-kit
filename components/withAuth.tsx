@@ -20,7 +20,7 @@ const withAuth = (WrappedComponent: any) => {
         }
         // Not Authenticated
         if (!isAuthenticated) {
-            router.push('/login')
+            router.push('/auth/sign-in')
             return null
         }
 
