@@ -6,6 +6,7 @@ import StyledInput from "@/components/styled/TextInput";
 import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded';
 import React, {useState} from "react";
 import {useRouter} from "next/router";
+import BasePageComponents from "@/components/layouts/BasePageComponents";
 
 
 type SignInProps = {
@@ -23,34 +24,36 @@ const SignIn = (props: SignInProps) => {
     }
 
     return (
-        <SlimContainer>
-            <Stack sx={{alignItems: 'center', gap: theme.spacing(3),}}>
-                <Typography sx={{textAlign: `center`}} variant={'h1'}>Create Account</Typography>
-                <Typography sx={{textAlign: `center`, color: theme.palette.grey[600]}}>Enter your email and we’ll send you a magic link to create an account.</Typography>
-                <form onSubmit={handleEmailLogin} style={{display: `flex`, flexDirection: `column`, width: `100%`, gap: theme.spacing(4)}}>
-                    <StyledInput
-                        sx={{minWidth: `300px`}}
-                        variant={'outlined'}
-                        size={'small'}
-                        value={email}
-                        placeholder={"name@company.com"}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            setEmail(event.target.value);
-                        }}
-                        autoFocus
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <AlternateEmailRoundedIcon style={{color: `#AFB1B6`, fontSize: `18px`}}></AlternateEmailRoundedIcon>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <Button type='submit' variant={'contained'}>Continue with email</Button>
-                </form>
-                <Button onClick={() => router.push('/auth/sign-in')} type='submit' variant={'text'} sx={{color: theme.palette.grey[700], width: `100%`}}>Sign In</Button>
-            </Stack>
-        </SlimContainer>
+        <BasePageComponents>
+            <SlimContainer>
+                <Stack sx={{alignItems: 'center', gap: theme.spacing(3),}}>
+                    <Typography sx={{textAlign: `center`}} variant={'h1'}>Create Account</Typography>
+                    <Typography sx={{textAlign: `center`, color: theme.palette.grey[600]}}>Enter your email and we’ll send you a magic link to create an account.</Typography>
+                    <form onSubmit={handleEmailLogin} style={{display: `flex`, flexDirection: `column`, width: `100%`, gap: theme.spacing(4)}}>
+                        <StyledInput
+                            sx={{minWidth: `300px`}}
+                            variant={'outlined'}
+                            size={'small'}
+                            value={email}
+                            placeholder={"name@company.com"}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setEmail(event.target.value);
+                            }}
+                            autoFocus
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <AlternateEmailRoundedIcon style={{color: `#AFB1B6`, fontSize: `18px`}}></AlternateEmailRoundedIcon>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <Button type='submit' variant={'contained'}>Continue with email</Button>
+                    </form>
+                    <Button onClick={() => router.push('/auth/sign-in')} type='submit' variant={'text'} sx={{color: theme.palette.grey[700], width: `100%`, fontSize: 12}}>Sign In</Button>
+                </Stack>
+            </SlimContainer>
+        </BasePageComponents>
     )
 }
 

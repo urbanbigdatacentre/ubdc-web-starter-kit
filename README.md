@@ -53,9 +53,10 @@ cd ubdc-web-starter-kit
 These are already connected and configured to work together, so we just need to start them up.
 This works by pulling the images from external docker registries and running them locally.
 
-To do this we need to run the docker compose file in the root directory of this project.
+To do this we need to run the docker compose file in the `nhost` directory of this project.
 
 ```bash
+cd nhost
 docker-compose up -d
 ```
 If you have docker desktop installed, you should see the containers running in the docker dashboard.

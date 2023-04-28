@@ -4,6 +4,7 @@ import Document from "next/document";
 import createEmotionCache from "@/utils/createEmotionCache";
 
 import React from "react";
+import {Box} from "@mui/material";
 
 export default class MyDocument extends Document {
     render() {
@@ -14,10 +15,9 @@ export default class MyDocument extends Document {
                 </Head>
 
                 <body>
-                <Main />
-                <NextScript />
+                    <Main />
+                    <NextScript />
                 </body>
-
             </Html>
         )
     }
