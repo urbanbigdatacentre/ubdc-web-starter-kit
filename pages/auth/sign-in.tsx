@@ -47,7 +47,7 @@ const SignIn = (props: SignInProps) => {
         <BasePageComponents>
             <Toaster toastOptions={{
                 style: {
-                    border: `.5px solid`,
+                    border: `1px solid`,
                     fontFamily: `monospace !important`,
                     borderColor: isError ? theme.palette.error.main : isSuccess ? theme.palette.success.main : theme.palette.grey[800],
 

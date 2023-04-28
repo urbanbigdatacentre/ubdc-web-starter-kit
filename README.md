@@ -76,9 +76,10 @@ The following endpoints are now exposed:
 
 > ### 🚨 ... Don't Forget
 
-In order to use the Nhost dashboard, you need to run the [Hasura console locally from the Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/):
+In order to use the Nhost dashboard, (from the `/nhost` directory) you need to run the [Hasura console locally from the Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/):
 
 ```sh
+
 hasura console
 ```
 
