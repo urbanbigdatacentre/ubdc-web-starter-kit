@@ -42,6 +42,7 @@ services:
       - "traefik.http.routers.hasura.rule=Host(`localhost`) && PathPrefix(`/`)"
       - "traefik.http.routers.hasura.entrypoints=web"
   auth:
+    # Excellent resource for docker compose env options - https://github.com/nhost/hasura-auth/blob/main/docs/configuration.md
     image: nhost/hasura-auth:0.16.2
     depends_on:
       - postgres
@@ -51,17 +52,17 @@ services:
       - ./emails:/app/email-templates
     environment:
       AUTH_HOST: '0.0.0.0'
+      AUTH_SMTP_HOST: mailhog
       HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:-secretpgpassword}@postgres:5432/postgres
       HASURA_GRAPHQL_GRAPHQL_URL: http://graphql-engine:8080/v1/graphql
       HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-      AUTH_EMAIL_PASSWORDLESS_ENABLED: true
+      AUTH_EMAIL_PASSWORDLESS_ENABLED: "true"
       AUTH_CLIENT_URL: ${AUTH_CLIENT_URL:-http://localhost:3000}
-      AUTH_SMTP_HOST: mailhog
       AUTH_SMTP_PORT: 1025
       AUTH_SMTP_USER: user
       AUTH_SMTP_PASS: password
-      AUTH_SMTP_SENDER: mail@example.com
+      AUTH_SMTP_SENDER: andrew.c.clarke@glasgow.ac.uk
     expose:
       - 4000
     labels:

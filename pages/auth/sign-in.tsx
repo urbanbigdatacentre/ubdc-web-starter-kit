@@ -1,6 +1,6 @@
 // Sign In Page
 import SlimContainer from "@/components/layouts/SlimContainer";
-import {alpha, Typography} from "@mui/material";
+import {alpha, CircularProgress, Typography} from "@mui/material";
 import {Stack, useTheme, InputAdornment, Button} from "@mui/material";
 import StyledInput from "@/components/styled/TextInput";
 import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded';
@@ -35,10 +35,13 @@ const SignIn = (props: SignInProps) => {
                 return error.message;
             })
             .then(res => {
+
                 if (isLoading) {
                     toast.loading('Checking your details ...')
                 } else if (res.isError) {
-                    toast.error(res.error?.message)
+                    res.error?.message ? toast.error(res.error?.message) : toast.error("Something went wrong")
+                } else if (res.isSuccess) {
+                    toast.success('Check your email for the magic link.')
                 }
             })
     }
@@ -47,9 +50,9 @@ const SignIn = (props: SignInProps) => {
         <BasePageComponents>
             <Toaster toastOptions={{
                 style: {
-                    border: `1px solid`,
+
                     fontFamily: `monospace !important`,
-                    borderColor: isError ? theme.palette.error.main : isSuccess ? theme.palette.success.main : theme.palette.grey[800],
+                    // borderColor: isError ? theme.palette.error.main : isSuccess ? theme.palette.success.main : theme.palette.grey[800],
 
                 },
             }}/>
@@ -76,7 +79,7 @@ const SignIn = (props: SignInProps) => {
                                 ),
                             }}
                         />
-                        <Button type='submit' variant={'contained'}>Continue with email</Button>
+                        <Button type='submit' variant={'contained'}>{!isLoading ? "Continue with email" : <CircularProgress size={24} sx={{color: theme.palette.action.active}}/>}</Button>
                     </form>
                     <Button onClick={() => router.push('/auth/create-account')} type='submit' variant={'text'} sx={{color: theme.palette.grey[700], width: `100%`, fontSize: 12}}>Create Account</Button>
                 </Stack>

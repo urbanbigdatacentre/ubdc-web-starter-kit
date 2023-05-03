@@ -6,11 +6,13 @@ import Link from "next/link";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import ProfileMenu from "@/components/menu/ProfileMenu";
+import {useUserData} from "@nhost/react";
 
 const Navbar = () => {
 
     const theme = useTheme();
     const router = useRouter();
+    const userData = useUserData();
 
     return (
         <Box>
@@ -27,8 +29,8 @@ const Navbar = () => {
                     </Box>
                 </Box>
                 <Box sx={{display: `flex`, alignItems: `center`}}>
-                    <Button variant={'contained'} onClick={(e) => router.push('/auth/sign-up')}>Login</Button>
-                    <ProfileMenu/>
+                    {userData ? <ProfileMenu/> : <Button variant={'contained'} onClick={(e) => router.push('/auth/sign-in')}>Login</Button>}
+
                     {/*{user && isAuthenticated ? <AvatarDropdown/> : <LogInNavButton/>}*/}
                 </Box>
             </Toolbar>
