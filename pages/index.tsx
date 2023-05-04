@@ -1,10 +1,20 @@
 import Head from 'next/head'
-import {Typography} from "@mui/material";
+import {Divider, Typography, Stack} from "@mui/material";
 import {useTheme} from "@mui/system";
 import withAuth from "@/components/withAuth";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
+import SlimContainer from "@/components/layouts/SlimContainer";
+import StandardContainer from "@/components/layouts/StandardContainer";
+import { readFileSync } from 'fs'
+import Link from "next/link";
 
-const Home = () => {
+
+
+type HomeProps = {
+
+}
+
+const Home = (props: HomeProps) => {
     const theme  = useTheme();
     return (
         <BasePageComponents>
@@ -15,12 +25,17 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                <Typography sx={{color: theme.palette.primary.main, fontFamily: `Poppins !important`}}>Web Starter Kit</Typography>
-            </main>
+            <StandardContainer>
+                <Stack sx={{width: `100%`}}>
+                    <Typography variant={'h1'} sx={{color: theme.palette.primary.main, fontFamily: `Poppins !important`}}> 👋 Web Starter Kit </Typography>
+                    <Divider component="div" sx={{margin: theme.spacing(2), width: `100%`}}/>
+                    <Link href={'/docs/getting-started'} passHref>Getting Started</Link>
+                </Stack>
+            </StandardContainer>
 
         </BasePageComponents>
     )
 }
+
 
 export default withAuth(Home);

@@ -7,7 +7,7 @@ type SlimContainerProps = {
 
 const SlimContainer = (props : SlimContainerProps) => {
     return (
-        <Container sx={{maxWidth: `425px`, display: `flex`, alignContent: `center`, justifyContent: `center`, marginTop: `150px`}}>
+        <Container sx={{maxWidth: `425px !important`, display: `flex`, alignContent: `center`, justifyContent: `center`, marginTop: `150px`}}>
             {props.children}
         </Container>
     )

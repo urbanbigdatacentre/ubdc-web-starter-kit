@@ -7,6 +7,8 @@ import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded
 import React, {useState} from "react";
 import {useRouter} from "next/router";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
+import {toast, Toaster} from "react-hot-toast";
+import {useSignInEmailPasswordless} from "@nhost/react";
 
 
 type SignInProps = {
@@ -18,18 +20,42 @@ const SignIn = (props: SignInProps) => {
     const router = useRouter();
     const [email, setEmail] = useState('');
 
-    const handleEmailLogin = (e:React.FormEvent<HTMLFormElement>) => {
+    // Nhost Hook for Magic Link Sign In
+    const { signInEmailPasswordless, isLoading, isSuccess, isError, error } =
+        useSignInEmailPasswordless()
+
+    const handleEmailCreateAccount = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Logging In')
+        signInEmailPasswordless(email)
+            .catch((error) => {
+                // Getting the Error details.
+                console.error(error);
+                return error.message;
+            })
+            .then(res => {
+
+                if (isLoading) {
+                    toast.loading('Checking your details ...')
+                } else if (res.isError) {
+                    res.error?.message ? toast.error(res.error?.message) : toast.error("Something went wrong")
+                } else if (res.isSuccess) {
+                    toast.success('Check your email for the magic link.')
+                }
+            })
     }
 
     return (
         <BasePageComponents>
+            <Toaster toastOptions={{
+                style: {
+                    fontFamily: `monospace !important`,
+                },
+            }}/>
             <SlimContainer>
                 <Stack sx={{alignItems: 'center', gap: theme.spacing(3),}}>
                     <Typography sx={{textAlign: `center`}} variant={'h1'}>Create Account</Typography>
                     <Typography sx={{textAlign: `center`, color: theme.palette.grey[600]}}>Enter your email and we’ll send you a magic link to create an account.</Typography>
-                    <form onSubmit={handleEmailLogin} style={{display: `flex`, flexDirection: `column`, width: `100%`, gap: theme.spacing(4)}}>
+                    <form onSubmit={handleEmailCreateAccount} style={{display: `flex`, flexDirection: `column`, width: `100%`, gap: theme.spacing(4)}}>
                         <StyledInput
                             sx={{minWidth: `300px`}}
                             variant={'outlined'}

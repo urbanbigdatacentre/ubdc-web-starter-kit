@@ -1,3 +1,8 @@
+---
+title: README
+slug: readme
+---
+
 <div>
 
 [//]: # (<img style="padding: 10px; width: 20%; border-radius: 10px; background-color: white;" width=100% src="https://www.gla.ac.uk/media/Media_709271_smxx.jpg">)
@@ -18,6 +23,7 @@ This is a starter kit for bootstrapping a full stack application.
 - [x] Next.js (Typescript) - _Frontend client_
 - [x] Apollo Client - _GraphQL client (caching)_
 - [x] Material UI - _UI components_
+- [x] React Hook Form - _Rendering Markdown_
 - [x] Yarn - _Package manager_
 - [x] Docker - _Containerisation_
 - [x] Nhost - _Dockerised backend as a service_
