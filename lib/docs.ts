@@ -1,9 +1,10 @@
 // Get All Document Files Utility Function
 
-import * as fs from "fs";
 import * as path from "path";
-import html from "remark-html";
-import {remark} from "remark";
+import * as fs from 'fs';
+import 'prismjs/themes/prism-okaidia.css';
+import parseMarkdown from "@/utils/parseMarkdown";
+
 
 export function getAllDocs() {
     const docsDirectory = 'docs';
@@ -18,6 +19,8 @@ export function getAllDocs() {
     });
 }
 
+const toc = require("@jsdevtools/rehype-toc");
+
 export async function getDocData(id:  string | string[] | undefined) {
     const docsDirectory = 'docs';
     const matter = require('gray-matter');
@@ -29,14 +32,10 @@ export async function getDocData(id:  string | string[] | undefined) {
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-
     // Use remark to convert markdown into HTML string
-    const processedContent = await remark()
-        .use(html)
-        .process(matterResult.content);
-    const contentHtml = processedContent.toString();
+    const contentHtml = await parseMarkdown(matterResult.content);
 
-    // Combine the data with the id
+    // Combine the data
     return {
         id,
         contentHtml,

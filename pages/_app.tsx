@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import '@/styles/fonts.css'
+import '@/styles/markdown.css';
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material';
 import theme from "@/styles/theme";

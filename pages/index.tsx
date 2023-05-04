@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {Divider, Typography, Stack} from "@mui/material";
 import {useTheme} from "@mui/system";
-import withAuth from "@/components/withAuth";
+import authRestricted from "@/components/authRestricted";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
 import SlimContainer from "@/components/layouts/SlimContainer";
 import StandardContainer from "@/components/layouts/StandardContainer";
@@ -38,4 +38,4 @@ const Home = (props: HomeProps) => {
 }
 
 
-export default withAuth(Home);
+export default authRestricted(Home);

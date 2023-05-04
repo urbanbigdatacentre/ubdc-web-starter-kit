@@ -3,7 +3,7 @@ import {useAuthenticationStatus} from "@nhost/react";
 import {Box, CircularProgress} from "@mui/material";
 import {useTheme} from "@mui/system";
 
-const withAuth = (WrappedComponent: any) => {
+const authRestricted = (WrappedComponent: any) => {
     return function AuthLogic (props: any) {
 
         const theme = useTheme();
@@ -28,4 +28,4 @@ const withAuth = (WrappedComponent: any) => {
     }
 }
 
-export default withAuth;
+export default authRestricted;
