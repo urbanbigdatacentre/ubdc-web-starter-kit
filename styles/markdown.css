@@ -1,151 +1,193 @@
-/**
- * MIT License
- * Copyright (c) 2018 Sarah Drasner
- * Sarah Drasner's[@sdras] Night Owl
- * Ported by Sara vieria [@SaraVieira]
- * Added by Souvik Mandal [@SimpleIndian]
- */
+h1, h2, h3, h4, h5, h6 {
+
+    margin-top: 1em;
+    font-weight: 600;
+    color: #4A5568 !important
+}
+
+p {
+    margin-top: 1.5em;
+}
+
+h5 {
+    opacity: .5;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+ul {
+    margin-top: 10px;
+    padding: 10px;
+    padding-right: 40px;
+    background-color: #ECF4FD;
+    color: #3793EF;
+    font-size: .8em;
+    list-style-type: none;
+    border-radius: 5px;
+    border: 1px solid #E2E8F0;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+ul > li {
+    /*margin-left: 20px;*/
+
+
+}
+
+hr {
+    opacity: .25;
+}
+
+p > a {
+    color: #3793EF;
+    text-decoration: underline;
+}
+
+blockquote {
+    margin: 1.5em 0;
+    padding: 0 1.5em;
+    color: #4A5568;
+    border-left: .25em solid #E2E8F0;
+}
+
+pre[class*="language-"] {
+    width: 97%;
+    border: 1px solid #E2E8F0;
+    border-radius: 2px;
+}
 
 code[class*="language-"],
 pre[class*="language-"] {
-    color: #d6deeb;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-family: "JetBrains Mono", Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+    font-size: 14px;
+    line-height: 1.375;
+    direction: ltr;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    font-size: 1em;
-
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
+    background: #f5f7ff;
+    color: #5e6687;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
+pre > code[class*="language-"] {
+    font-size: 1em;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
     text-shadow: none;
-    background: rgba(29, 59, 83, 0.99);
+    background: #dfe2f1;
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
     text-shadow: none;
-    background: rgba(29, 59, 83, 0.99);
-}
-
-@media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
-        text-shadow: none;
-    }
+    background: #dfe2f1;
 }
 
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1em;
-    margin: 0.5em 0;
+    margin: .5em 0;
     overflow: auto;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    color: white;
-    background: #011627;
-}
-
+/* Inline code */
 :not(pre) > code[class*="language-"] {
-    padding: 0.1em;
-    border-radius: 0.3em;
-    white-space: normal;
+    padding: .1em;
+    border-radius: .3em;
 }
 
 .token.comment,
 .token.prolog,
+.token.doctype,
 .token.cdata {
-    color: rgb(99, 119, 119);
-    font-style: italic;
+    color: #898ea4;
 }
 
 .token.punctuation {
-    color: rgb(199, 146, 234);
+    color: #5e6687;
 }
 
-.namespace {
-    color: rgb(178, 204, 214);
+.token.namespace {
+    opacity: .7;
+}
+
+.token.operator,
+.token.boolean,
+.token.number {
+    color: #c76b29;
+}
+
+.token.property {
+    color: #c08b30;
+}
+
+.token.tag {
+    color: #3d8fd1;
+}
+
+.token.string {
+    color: #22a2c9;
+}
+
+.token.selector {
+    color: #6679cc;
+}
+
+.token.attr-name {
+    color: #c76b29;
+}
+
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #22a2c9;
+}
+
+.token.attr-value,
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit {
+    color: #ac9739;
+}
+
+.token.statement,
+.token.regex,
+.token.atrule {
+    color: #22a2c9;
+}
+
+.token.placeholder,
+.token.variable {
+    color: #3d8fd1;
 }
 
 .token.deleted {
-    color: rgba(239, 83, 80, 0.56);
-    font-style: italic;
+    text-decoration: line-through;
 }
 
-.token.symbol,
-.token.property {
-    color: rgb(128, 203, 196);
-}
-
-.token.tag,
-.token.operator,
-.token.keyword {
-    color: rgb(127, 219, 202);
-}
-
-.token.boolean {
-    color: rgb(255, 88, 116);
-}
-
-.token.number {
-    color: rgb(247, 140, 108);
-}
-
-.token.constant,
-.token.function,
-.token.builtin,
-.token.char {
-    color: rgb(130, 170, 255);
-}
-
-.token.selector,
-.token.doctype {
-    color: rgb(199, 146, 234);
-    font-style: italic;
-}
-
-.token.attr-name,
 .token.inserted {
-    color: rgb(173, 219, 103);
+    border-bottom: 1px dotted #202746;
+    text-decoration: none;
+}
+
+.token.italic {
     font-style: italic;
-}
-
-.token.string,
-.token.url,
-.token.entity,
-.language-css .token.string,
-.style .token.string {
-    color: rgb(173, 219, 103);
-}
-
-.token.class-name,
-.token.atrule,
-.token.attr-value {
-    color: rgb(255, 203, 139);
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-    color: rgb(214, 222, 235);
 }
 
 .token.important,
@@ -153,6 +195,59 @@ pre[class*="language-"] {
     font-weight: bold;
 }
 
-.token.italic {
-    font-style: italic;
+.token.important {
+    color: #c94922;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+pre > code.highlight {
+    outline: 0.4em solid #c94922;
+    outline-offset: .4em;
+}
+
+/* overrides color-values for the Line Numbers plugin
+ * http://prismjs.com/plugins/line-numbers/
+ */
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.line-numbers-rows > span {
+    display: block;
+    counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
 }

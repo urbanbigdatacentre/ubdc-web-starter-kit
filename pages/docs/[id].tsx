@@ -1,5 +1,5 @@
 // Component to render a single document from markdown files located in root/docs
-import {getAllDocs, getDocData} from "@/lib/docs";
+import {getAllDocPaths, getAllDocs, getDocData} from "@/lib/docs";
 import {ParsedUrlQuery} from "querystring";
 import StandardContainer from "@/components/layouts/StandardContainer";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
@@ -51,7 +51,7 @@ const Doc = (props : DocProps) => {
                 <Stack sx={{gap: theme.spacing(1)}}>
                     <Typography variant={'h1'}>{doc.title}</Typography>
                     <Divider component="div" sx={{width: `100%`}}/>
-                    <Box sx={{display: `flex`, width: `100%`, justifyContent: `space-between`, marginBottom: theme.spacing(4)}}>
+                    <Box sx={{display: `flex`, width: `100%`, justifyContent: `space-between`, }}>
                         <Typography variant={'caption'} sx={{color: theme.palette.grey[600]}}>{doc.fullPath}</Typography>
                         <Typography variant={'caption'} sx={{color: theme.palette.grey[900]}}>{doc.author}</Typography>
                     </Box>
@@ -79,9 +79,11 @@ interface Params extends ParsedUrlQuery {
 export async function getStaticProps({params}: Params) {
     if (params != null) {
         const docData= await getDocData(params['id']);
+        const docFileStructure = await getAllDocPaths();
         return {
             props: {
                 docData,
+                docFileStructure
             },
         };
     }

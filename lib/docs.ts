@@ -19,6 +19,21 @@ export function getAllDocs() {
     });
 }
 
+export function getAllDocPaths() {
+    const docsDirectory = 'docs';
+    const fileNames = fs.readdirSync(docsDirectory);
+
+    console.log(fileNames);
+
+    return fileNames.map((fileName: string) => {
+        return {
+            params: {
+                id: fileName.replace(/\.md$/, ''),
+            },
+        };
+    });
+}
+
 const toc = require("@jsdevtools/rehype-toc");
 
 export async function getDocData(id:  string | string[] | undefined) {

@@ -7,15 +7,22 @@ import SlimContainer from "@/components/layouts/SlimContainer";
 import StandardContainer from "@/components/layouts/StandardContainer";
 import { readFileSync } from 'fs'
 import Link from "next/link";
+import parseMarkdown from "@/utils/parseMarkdown";
+import path from "path";
+import fs from "fs";
+import matter from "gray-matter";
+import {getAllDocPaths, getDocData} from "@/lib/docs";
 
 
 
-type HomeProps = {
+interface HomeProps {
+    readMeContent: string
 
 }
 
 const Home = (props: HomeProps) => {
     const theme  = useTheme();
+
     return (
         <BasePageComponents>
             <Head>
@@ -30,11 +37,31 @@ const Home = (props: HomeProps) => {
                     <Typography variant={'h1'} sx={{color: theme.palette.primary.main, fontFamily: `Poppins !important`}}> 👋 Web Starter Kit </Typography>
                     <Divider component="div" sx={{margin: theme.spacing(2), width: `100%`}}/>
                     <Link href={'/docs/getting-started'} passHref>Getting Started</Link>
+
+                    <Typography ></Typography>
+                    <div dangerouslySetInnerHTML={{ __html: props.readMeContent }} />
                 </Stack>
             </StandardContainer>
 
         </BasePageComponents>
     )
+}
+
+export async function getStaticProps() {
+
+        const matter = require('gray-matter');
+        const fileContents = fs.readFileSync('README.md', 'utf8');
+        // Use gray-matter to parse the post metadata section
+        const matterResult = matter(fileContents);
+        // Use remark to convert markdown into HTML string
+        const readMeContent = await parseMarkdown(matterResult.content);
+
+        return {
+            props: {
+                readMeContent
+            },
+        };
+
 }
 
 
