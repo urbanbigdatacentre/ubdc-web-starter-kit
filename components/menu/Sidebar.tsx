@@ -1,11 +1,23 @@
 // Sidebar Component
 import React from "react";
-import {Avatar, Box, Drawer, Stack, Typography} from "@mui/material";
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary, alpha,
+    Box,
+    Button,
+    Drawer,
+    Stack,
+    Typography
+} from "@mui/material";
 import {useTheme} from "@mui/system";
-import Link from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
 import {IconButton} from "@mui/material";
 import {Index} from "unist-util-visit-parents";
+import {ExpandMore} from "@mui/icons-material";
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import {useRouter} from "next/router";
+import {sidebarTitle} from "@/config/appConfig";
 
 interface SidebarProps {
     fileStructure: Object;
@@ -28,7 +40,11 @@ const Sidebar = (props: SidebarProps) => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'none' }, position: `fixed`, top: 60, left: 20, color: theme.palette.action.active, border: `1px dashed ${theme.palette.action.active}`, boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.25)`, backgroundColor: theme.palette.action.hover, zIndex: 1000}}
+                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000,
+                    '&:hover': {
+                        backgroundColor: alpha('#bbdefb', .85),
+                    }
+                }}
             >
                 <MenuIcon />
             </IconButton>
@@ -39,9 +55,15 @@ const Sidebar = (props: SidebarProps) => {
                 ModalProps={{
                     keepMounted: true, // Better open performance on mobile.
                 }}
+                PaperProps={{
+                    sx: {
+                        width: `250px !important`,
+                        paddingTop: theme.spacing(4),
+                    }
+                }}
                 sx={{
-                    display: { xs: 'block', sm: 'none' },
-                    width: `250px`,
+                    display: { xs: 'block', md: 'none' },
+                    width: `200px`,
                     backgroundColor: theme.palette.action.white,
                     boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
                     alignItems: `start`,
@@ -51,27 +73,13 @@ const Sidebar = (props: SidebarProps) => {
             >
                 <SideBarContent fileStructure={props.fileStructure} />
             </Drawer>
-            <Drawer
-                anchor={'left'}
-                variant="permanent"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                PaperProps={{
-                    sx: {
-                        display: { xs: 'none', sm: 'flex' },
-                        marginTop: `64px`,
-                        width: `250px`,
-                        backgroundColor: theme.palette.action.white,
-                        boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
-                        alignItems: `start`,
-                        justifyContent: `space-between`,
-                        boxSizing: 'border-box',
-                    }
-                }}
-
-            >
+            <Box sx={{minWidth: `300px`, marginRight: theme.spacing(2),
+                [theme.breakpoints.down('md')]: {
+                    display: `none`
+                },
+            }}>
                 <SideBarContent fileStructure={props.fileStructure} />
-            </Drawer>
+            </Box>
         </Box>
     )
 }
@@ -94,70 +102,102 @@ interface FileStructureProps {
 }
 
 const SideBarContent = (props: SidebarProps) => {
+
             const theme = useTheme();
+            const router = useRouter();
+
+
             return (
-                <Stack sx={{gap: theme.spacing(1), paddingLeft: theme.spacing(2), paddingTop: theme.spacing(3), paddingRight: theme.spacing(10)}}>
-                    <Box sx={{display: `flex`, gap: theme.spacing(1)}}>
-                        <Avatar alt="UBDC Logo" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>
-                        <Typography variant={'h6'} sx={{marginBottom: theme.spacing(2)}}>Docs</Typography>
-                    </Box>
-                    <Stack sx={{display: `flex`, gap: theme.spacing(4)}}>
+                <Stack sx={{ paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2), width: `100%`}}>
+                    {sidebarTitle ? <Box sx={{
+                        display: `flex`,
+                        gap: theme.spacing(1),
+                        alignItems: `center`,
+                        marginBottom: theme.spacing(2)
+                    }}>
+                        {/*<Avatar alt="Docs Icon" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>*/}
+                        <Typography variant={'h6'}>{sidebarTitle}</Typography>
+                    </Box> : <></>}
+                    <Stack sx={{display: `flex`, width: `100%`, padding: 0}}>
                         {
                             props.fileStructure['children'].map((item: FileStructureProps, index: Index) => {
                                 if (item['name'].includes('md')) {
 
                                     return (
-                                        <Box key={index}>
-                                            <Link href={`/${item.path.replace('.md', '')}`}>
-                                                <Typography variant={'caption'} sx={{textDecoration: `underline`, textTransform: `capitalize`}}>{item.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
-                                            </Link>
-                                        </Box>
+                                        <Button key={index} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100], marginBottom: theme.spacing(2),
+                                            '&:hover': {
+                                                color: theme.palette.grey[900],
+                                            },
+                                        }} onClick={() => router.push(`/${item.path.replace('.md', '')}`)}>
+                                            <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`, textDecoration: `underline`}}>{item.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
+                                            <ArrowForwardRoundedIcon style={{fontSize: 18}}/>
+                                        </Button>
                                     )
                                 } else {
                                     return (
-                                        <Stack key={index} sx={{display: `flex`, gap: theme.spacing(2)}} >
-                                            <Box sx={{backgroundColor: theme.palette.action.hover, border: `1px dashed ${theme.palette.action.active}`, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
-                                                <Typography variant={'body2'} sx={{color: theme.palette.action.active, fontWeight: 500, textTransform: `capitalize`}}>{item['name']}</Typography>
+                                        <Accordion disableGutters elevation={0} square key={index} sx={{display: `flex`, gap: theme.spacing(2),  flexDirection: `column`, padding: 0, width: `100%`, marginBottom: theme.spacing(1),
+                                            '&:before': {
+                                                display: 'none',
+                                            },}} >
+                                            <AccordionSummary sx={{display: `flex`, justifyContent: `space-between`, padding: 0, width: `100%`}} expandIcon={<ExpandMore style={{color: theme.palette.grey[900]}}/>} aria-controls={`accordion-${index}`} id={`accordion-${index}-header`}>
+                                            <Box sx={{backgroundColor: theme.palette.action.hover, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
+                                                <Typography variant={'body2'} sx={{color: theme.palette.grey[900], fontWeight: 500, fontFamily: `JetBrains Mono !important`, textTransform: `capitalize`}}>{item.name.replace('_', ' ').replace('-', ' ')}</Typography>
                                             </Box>
+                                            </AccordionSummary>
 
-
+                                            <AccordionDetails sx={{display: `flex`, flexDirection: `column`, padding: 0, gap: theme.spacing(2), marginBottom: theme.spacing(2)}}>
                                             {
                                                 item.children.map((innerItem: any, innerIndex: Index) => {
                                                     if (innerItem['name'].includes('md')) {
                                                         return (
-                                                            <Box key={innerIndex} sx={{marginLeft: theme.spacing(2)}}>
-                                                                <Link href={`/${innerItem.path.replace('.md', '')}`}>
-                                                                    <Typography variant={'caption'} sx={{textDecoration: `underline`, textTransform: `capitalize`}}>{innerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
-                                                                </Link>
-                                                            </Box>
+                                                            <Button key={innerIndex} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100],
+                                                                '&:hover': {
+                                                                    color: theme.palette.grey[900],
+                                                                },
+                                                            }} onClick={() => router.push(`/${innerItem.path.replace('.md', '')}`)}>
+                                                                <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`, textDecoration: `underline`}}>{innerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
+                                                                <ArrowForwardRoundedIcon style={{fontSize: 18}} />
+                                                            </Button>
                                                         )
                                                     } else {
                                                         return (
-                                                            <Stack sx={{paddingLeft: theme.spacing(2), gap: theme.spacing(1)}} key={innerIndex}>
-
-                                                                <Typography variant={'caption'} sx={{color: theme.palette.grey[900], fontWeight: 500, textTransform: `capitalize`}}>{innerItem['name']}</Typography>
-
+                                                            <Accordion disableGutters elevation={0} square key={index} sx={{display: `flex`, gap: theme.spacing(2),  flexDirection: `column`, padding: 0, marginLeft: theme.spacing(2),
+                                                                '&:before': {
+                                                                    display: 'none',
+                                                                },}} >
+                                                                <AccordionSummary sx={{display: `flex`, justifyContent: `space-between`, padding: 0, width: `100%`}} expandIcon={<ExpandMore style={{color: theme.palette.grey[900]}}/>} aria-controls={`accordion-${index}`} id={`accordion-${index}-header`}>
+                                                                <Box sx={{backgroundColor: theme.palette.action.hover, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
+                                                                    <Typography variant={'body2'} sx={{color: theme.palette.grey[900], fontWeight: 500, fontFamily: `JetBrains Mono !important`, textTransform: `capitalize`}}>{innerItem['name']}</Typography>
+                                                                </Box>
+                                                                </AccordionSummary>
+                                                                <AccordionDetails sx={{display: `flex`, flexDirection: `column`, padding: 0, marginLeft: theme.spacing(2), gap: theme.spacing(2), marginBottom: theme.spacing(2)}}>
                                                                 {
                                                                     innerItem.children.map((innerInnerItem: FileStructureProps, innerInnerIndex: Index) => {
                                                                         if (innerInnerItem['name'].includes('md')) {
                                                                             return (
-                                                                                <Box sx={{marginLeft: theme.spacing(2)}} key={innerInnerIndex}>
-                                                                                    <Link key={innerInnerIndex} href={`/${innerInnerItem?.path.replace('.md', '')}`}>
-                                                                                        <Typography variant={'caption'} sx={{textDecoration: `underline`, textTransform: `capitalize` }}>{innerInnerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
-                                                                                    </Link>
-                                                                                </Box>
+                                                                                <Button key={innerInnerIndex} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100],
+                                                                                    '&:hover': {
+                                                                                        color: theme.palette.grey[900],
+                                                                                    },
+
+                                                                                }} onClick={() => router.push(`/${innerInnerItem.path.replace('.md', '')}`)}>
+                                                                                    <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`, textDecoration: `underline`}}>{innerInnerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
+                                                                                    <ArrowForwardRoundedIcon style={{fontSize: 18}}/>
+                                                                                </Button>
                                                                             )
                                                                         }
                                                                     })
                                                                 }
+                                                                </AccordionDetails>
 
-                                                            </Stack>
+                                                            </Accordion>
                                                         )
                                                     }
                                                 })
                                             }
+                                            </AccordionDetails>
 
-                                        </Stack>
+                                        </Accordion>
                                     )
                                 }
                             })

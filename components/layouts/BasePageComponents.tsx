@@ -8,8 +8,8 @@ type BasePageComponentsProps = {
 
 const BasePageComponents = (props: BasePageComponentsProps) => {
     return (
-        <Box>
-            <Navbar />
+        <Box sx={{display: `flex`, alignItems: `center`, justifyContent: `center`}}>
+            <Navbar search/>
             {props.children}
         </Box>
     )

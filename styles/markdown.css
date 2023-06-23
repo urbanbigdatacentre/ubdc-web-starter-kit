@@ -5,10 +5,23 @@ h1, h2, h3, h4, h5, h6 {
     color: #4A5568 !important
 }
 
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
+code > .blockquote {
+    padding: 0;
+    background: none;
 }
+
+.blockquote {
+    background: none;
+}
+
+.callout-content {
+    background: #FAFAFA;
+}
+
+/*hr {*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
 p {
 
@@ -24,14 +37,9 @@ h5 {
 ul {
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 10px;
-    padding-right: 40px;
-    background-color: #ECF4FD;
-    color: #3793EF;
-    font-size: .8em;
-    list-style-type: none;
-    border-radius: 5px;
-    border: 1px solid #E2E8F0;
+    padding-left: 20px;
+    font-size: 1em;
+
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -136,6 +144,53 @@ pre[class*="language-"] {
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
+}
+
+
+/*GITHUB FLAV MARKDOWN */
+
+table {
+    border-collapse: collapse;
+
+}
+
+th, td {
+    border: 1px solid #E2E8F0;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
+td {
+    font-weight: 300;
+}
+
+tr:nth-child(even) {background: #F7FAFC}
+
+
+thead {
+    text-align: left;
+}
+
+/*TASKLIST*/
+.contains-task-list {
+    background-color: #fff;
+    border: none;
+    list-style: none;
+
+}
+
+.contains-task-list > li {
+    color: #24292e;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 300 !important;
+}
+
+.contains-task-list > li > input {
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 /* Inline code */
@@ -285,3 +340,4 @@ pre[class*="language-"].line-numbers > code {
     padding-right: 0.8em;
     text-align: right;
 }
+

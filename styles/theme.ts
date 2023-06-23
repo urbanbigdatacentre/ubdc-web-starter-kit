@@ -26,7 +26,7 @@ const theme = createTheme({
     },
     palette: {
         primary: {
-            main: '#556cd6',
+            main: '#3793EF',
         },
         action: {
             active: '#3793EF',
@@ -52,7 +52,7 @@ const theme = createTheme({
             fontFamily: `Poppins !important`,
         },
         h1: {
-            fontSize: `40px !important`,
+            fontSize: `36px !important`,
             color: `#2D3748 !important`,
             fontWeight: 600,
         },
@@ -66,10 +66,9 @@ const theme = createTheme({
             fontWeight: 500,
         },
         body2: {
-            fontSize: `15px !important`,
-
-            fontWeight: `300 !important`,
-        }
+            fontSize: `14px !important`,
+            fontWeight: `400 !important`,
+        },
     }
 });
 
