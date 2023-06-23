@@ -2,6 +2,7 @@
 title: Overview
 author: andrew.c.clarke@glasgow.ac.uk
 category: getting-started
+tags: [how to use, markdown, next.js, docker, static site, documentation]
 ---
 
 #### Table of Contents

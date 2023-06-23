@@ -2,6 +2,7 @@
 title: Quick Start
 author: andrew.c.clarke@glasgow.ac.uk
 category: getting-started
+tags: [how to use, markdown, next.js, docker, static site, documentation]
 ---
 
 #### Table of Contents
@@ -25,7 +26,7 @@ For Deployment
 If you haven't already done so, clone the repository:
 
 ```bash
-git clone 🚨
+git clone -b docs https://github.com/urbanbigdatacentre/ubdc-web-starter-kit.git
 ```
 
 > **In this guide**
@@ -43,7 +44,20 @@ npm install
 
 This will install all the dependencies required to run the app.
 
-Now find the `appConfig.ts` file in the `/config` directory. This file contains all the configuration options for your site. You can change the `title`, `description` and `author` of your site here.
+Now find the `appConfig.ts` file in the `/config` directory. This file contains all the configuration options for your site. You can change the following global variables here:
+
+```javascript
+
+export const siteTitle = 'UBDC Web Starter Kit';
+export const siteDescription = 'A starter kit for creating web apps with Next.js, Material UI, and TypeScript.';
+export const siteKeywords = 'docs, starter, template';
+export const siteAuthor = 'Your Name';
+export const pathToLogo = '/ubdc-logo.png';
+export const pathToFavicon = '/favicon.ico';
+export const redirectPath = '/docs/getting-started/overview'
+export const siteTag = 'v0.0.1';
+```
+
 You can also change the `logo` and `favicon` by adding your own images to the `/public/images` directory and referencing them in the config file.
 
 ## 2. Add content
