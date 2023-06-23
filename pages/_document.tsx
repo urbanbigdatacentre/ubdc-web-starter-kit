@@ -12,12 +12,7 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                    <meta name="viewport" content="initial-scale=1, width=device-width" />
-                    <meta name="theme-color" content="#000000" />
-                    <meta name="description" content={siteDescription} />
-                    <meta name="keywords" content={siteKeywords} />
-                    <meta name="author" content={siteAuthor} />
+
                 </Head>
 
                 <body>

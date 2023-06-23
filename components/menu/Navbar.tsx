@@ -2,17 +2,13 @@
 import {AppBar, Box, Typography, Toolbar, Button, Avatar} from "@mui/material";
 import {useTheme} from "@mui/system";
 import Link from "next/link";
-import Image from "next/image";
 import {useRouter} from "next/router";
-import ProfileMenu from "@/components/menu/ProfileMenu";
-import {useUserData} from "@nhost/react";
 import {pathToLogo, siteTag, siteTitle} from "@/config/appConfig";
 
 const Navbar = () => {
 
     const theme = useTheme();
     const router = useRouter();
-    const userData = useUserData();
 
     return (
         <Box sx={{position: `fixed`, width: `100%`, top: `0`, backgroundColor: theme.palette.background.paper}}>
@@ -28,11 +24,7 @@ const Navbar = () => {
                         <Typography variant={'caption'} sx={{color: theme.palette.action.active, fontWeight: 500}}>{siteTag}</Typography>
                     </Box>
                 </Box>
-                <Box sx={{display: `flex`, alignItems: `center`}}>
-                    {userData ? <ProfileMenu/> : <Button variant={'contained'} onClick={(e) => router.push('/auth/sign-in')}>Login</Button>}
 
-                    {/*{user && isAuthenticated ? <AvatarDropdown/> : <LogInNavButton/>}*/}
-                </Box>
             </Toolbar>
         </Box>
     )

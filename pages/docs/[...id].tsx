@@ -10,6 +10,7 @@ import Sidebar from "@/components/menu/Sidebar";
 import React from "react";
 import {useRouter} from "next/router";
 import Footer from "@/components/menu/Footer";
+import {siteAuthor, siteDescription, siteKeywords} from "@/config/appConfig";
 
 interface DocProps {
     docData: {
@@ -31,13 +32,17 @@ const Doc = (props : DocProps) => {
     const theme = useTheme();
     const router = useRouter();
 
-
-
     return (
         <BasePageComponents>
             <Sidebar fileStructure={fileStructure}/>
             <Head>
                 <title>{doc.title}</title>
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="initial-scale=1, width=device-width" />
+                <meta name="theme-color" content="#000000" />
+                <meta name="description" content={siteDescription} />
+                <meta name="keywords" content={siteKeywords} />
+                <meta name="author" content={siteAuthor} />
             </Head>
             <StandardContainer sidebar>
                 <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: `100%`, marginTop: { xs: theme.spacing(5), sm: 0 },}}>

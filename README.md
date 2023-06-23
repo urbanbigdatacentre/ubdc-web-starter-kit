@@ -1,109 +1,119 @@
 ---
-title: README
-slug: readme
+title: Overview
+author: andrew.c.clarke@glasgow.ac.uk
+category: getting-started
 ---
 
-<div>
+#### Table of Contents
 
-[//]: # (<img style="padding: 10px; width: 20%; border-radius: 10px; background-color: white;" width=100% src="https://www.gla.ac.uk/media/Media_709271_smxx.jpg">)
-<h2 align="left">UBDC Web App Starter Kit</h2>
-</div>
+# Explainer
+-------------------------
+This is a documentation template kit using Markdown and Next.js.
 
-![TypeScript](https://img.shields.io/badge/Typescript-5.0.4-red.svg)
-![Next.JS](https://img.shields.io/badge/Next.js-13.3.1-yellow.svg)
-![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+Although part of the [`ubdc-web-starter-kit`](https://github.com/urbanbigdatacentre/ubdc-web-starter-kit/tree/main) repository, this application is standalone and can be used as a static site template for any documentation site.
 
-## Basic Overview
-This is a starter kit for bootstrapping a full stack application. 
+#### Why Use Me?
 
-> 🤔 _Why use me?_ Designed to quickstart new frontend projects in need of **common backend services** like Authentication, DB & Admin, Instant GraphQL API & Mail Services.
+• You don't have Javascript experience (and don't want any)
 
-## Templated Services
-- [x] Next.js (Typescript) - _Frontend client_
-- [x] Apollo Client - _GraphQL client (caching)_
-- [x] Material UI - _UI components_
-- [x] React Hook Form - _Rendering Markdown_
-- [x] Yarn - _Package manager_
-- [x] Docker - _Containerisation_
-- [x] Nhost - _Dockerised backend as a service_
-  -  PostgreSQL - _Database_
-  - Hasura - _GraphQL API (Generated Schema)_
-  - Auth - _Authentication_
-  - Storage - _File storage_
-  - Functions - _Serverless functions_
-  - Adminer - _Database management_
-  - Mailhog - _Email testing_
+• You want to create a static documentation site
 
-## Getting Started
-Clone this repo and install the dependencies:
+• You don't to use a CMS
 
-```bash
-git clone https://github.com/urbanbigdatacentre/ubdc-web-starter-kit.git
+• You want to manage your docs in a git repository
 
-cd ubdc-web-starter-kit
-```
-  
-## Running the application locally
-> ### 📚 Prerequisites
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-- [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-- [Node.js](https://nodejs.org/en/download/)
-- [Hasura CLI](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html#install-hasura-cli)
+• You want to use Markdown to create your docs
 
-> ### 🕋 Backend Setup 
+• You want the possibility of extending your site with React components
 
-   _To setup the backend, we'll be locally hosting a set of docker containers that contain the Nhost services described above._
-   
-These are already connected and configured to work together, so we just need to start them up.
-This works by pulling the images from external docker registries and running them locally.
 
-To do this we need to run the docker compose file in the `nhost` directory of this project.
+
+> **How To Use Me?**
+> 1. Clone the repository - `git clone -b docs https://github.com/urbanbigdatacentre/ubdc-web-starter-kit.git`
+> 2. Add folders and new `.md` files to the `/docs` directory
+> 3. Start the Next.js server and explore your docs site - `npm run dev`
+> 4. Deploy with Docker - config included
+
+ 
+# Quick Start
+-------------------------
+This is a quick start guide to help you get up and running with your documentation site. The app is designed to be able quick and easy for anyone to use.
+
+You can add new folders, pages and markdown content and the site will automatically add new routes and render your new content.
+
+
+#### Pre-requisites
+-------------------------
+We assume you have the following installed on your machine:
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/get-npm) or [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+- [Git](https://git-scm.com/downloads)
+
+For Deployment
+- [Docker](https://www.docker.com/products/docker-desktop)
+
+If you haven't already done so, clone the repository:
 
 ```bash
-cd nhost
-docker-compose up -d
-```
-If you have docker desktop installed, you should see the containers running in the docker dashboard.
-
-Otherwise, check this using the cmd `docker ps` in the terminal.
-
-The following endpoints are now exposed:
-
-- `http://localhost:1337/v1/graphql`: Hasura GraphQL endpoint
-- `http://localhost:1337/v1/auth`: Hasura Auth
-- `http://localhost:1337/v1/storage`: Hasura Storage
-- `http://localhost:1337/v1/functions`: Functions
-- `http://localhost:3030`: Nhost Dashboard
-- `http://localhost:1337`: Hasura Console
-- `http://localhost:8025`: Mailhog SMTP testing dashboard
-- `http://localhost:9090`: Traefik dashboard
-
-> ### 🚨 ... Don't Forget
-
-In order to use the Nhost dashboard, (from the `/nhost` directory) you need to run the [Hasura console locally from the Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/):
-
-```sh
-
-hasura console
+git clone -b docs https://github.com/urbanbigdatacentre/ubdc-web-starter-kit.git
 ```
 
+> **In this guide**
+> 1. Configure your site
+> 2. Add content
+> 3. Start the server
+> 4. Explore your docs
 
-> ### 🖥 Next.js Setup
-Run the development server:
+## 1. Configure your site
+You should already have cloned the repository and have a local folder with the project files. To install the dependencies, run the following command in the root of the project:
+
+```bash
+npm install
+```
+
+This will install all the dependencies required to run the app.
+
+Now find the `appConfig.ts` file in the `/config` directory. This file contains all the configuration options for your site. You can change the `title`, `description` and `author` of your site here.
+You can also change the `logo` and `favicon` by adding your own images to the `/public/images` directory and referencing them in the config file.
+
+## 2. Add content
+Docs are stored as markdown files in the `/docs` directory. Find the docs directory. You can add new folders and new `.md` files to the `/docs` directory. They will automatically appear on your docs site.
+1. Add a new markdown file to the `/docs` directory called 'example.md'
+2. Add the following content to the top of the file:
+
+```markdown
+---
+title: Example
+author: <your-email>
+category: getting-started
+---
+```
+This content is used to generate the page title, author and category.
+
+Add the following markdown content to the file:
+
+```markdown
+# Example Page
+This is an example page. You can add any markdown content here.
+
+## Subheading
+You can add subheadings and more markdown content.
+
+### Sub-subheading
+You can add sub-subheadings and more markdown content.
+
+#### Sub-sub-subheading
+You get the picture.
+```
+
+## 3. Start the server
+Your docs site is now ready to roll. To start the server, run the following command in the root of the project:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. Without any authentication, you will be redirected to the login page.
+This will start the Next.js server and open your docs site in your default browser. You can now explore your docs site at `http://localhost:3000`.
 
-You can start editing the page by modifying `pages/sign-in.tsx`. The page auto-updates as you edit the file.
-
-
-
+## 4. Explore your docs
+You can now explore your docs site. You can add new folders and new `.md` files to the `/docs` directory. To get them to appear - refresh the page.
