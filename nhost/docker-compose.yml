@@ -13,6 +13,7 @@ services:
       - "9090:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+#  Remove the Postgres DB and run this service elsewhere
   postgres:
     image: postgres
     restart: always
@@ -36,11 +37,13 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: public
       HASURA_GRAPHQL_LOG_LEVEL: debug
-      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_RUN_CONSOLE: "true"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.hasura.rule=Host(`localhost`) && PathPrefix(`/`)"
       - "traefik.http.routers.hasura.entrypoints=web"
+#    command: bash -c "npm install --global hasura-cli && hasura migrate apply && hasura metadata apply && hasura console"
   auth:
     # Excellent resource for docker compose env options - https://github.com/nhost/hasura-auth/blob/main/docs/configuration.md
     image: nhost/hasura-auth:0.16.2
@@ -62,6 +65,7 @@ services:
       AUTH_SMTP_PORT: 1025
       AUTH_SMTP_USER: user
       AUTH_SMTP_PASS: password
+#      We might need an email address here
       AUTH_SMTP_SENDER: andrew.c.clarke@glasgow.ac.uk
     expose:
       - 4000

@@ -5,8 +5,14 @@ h1, h2, h3, h4, h5, h6 {
     color: #4A5568 !important
 }
 
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 p {
-    margin-top: 1.5em;
+
+    font-weight: 300;
 }
 
 h5 {
@@ -17,6 +23,7 @@ h5 {
 
 ul {
     margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     padding-right: 40px;
     background-color: #ECF4FD;
@@ -32,10 +39,38 @@ ul {
 
 }
 
-ul > li {
+ul > li > p, ul > li {
     /*margin-left: 20px;*/
+    height: min-content;
+    font-weight: 500 !important;
+    margin-top: 0;
+    text-decoration: underline;
+}
+
+li > ul {
+    padding: 0 !important;
+    margin: 0;
+    border: none;
+    display: none;
+}
 
 
+blockquote {
+
+    padding: 10px
+}
+
+blockquote > p {
+    padding-bottom: 15px;
+    width: 90%;
+}
+
+ol > li {
+    margin-left: 20px;
+    width: 90%;
+    padding-bottom: 20px;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 hr {
@@ -71,7 +106,6 @@ pre[class*="language-"] {
     word-spacing: normal;
     word-break: normal;
     -moz-tab-size: 4;
-    -o-tab-size: 4;
     tab-size: 4;
     -webkit-hyphens: none;
     -moz-hyphens: none;

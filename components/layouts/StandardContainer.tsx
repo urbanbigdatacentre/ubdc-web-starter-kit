@@ -1,5 +1,5 @@
 // Slim Container Layout
-import {Container, Box, useTheme, breakpoints} from "@mui/system";
+import {Container, useTheme} from "@mui/system";
 
 type StandardContainerProps = {
     children: string | JSX.Element | JSX.Element[],
@@ -10,9 +10,14 @@ const StandardContainer = (props : StandardContainerProps) => {
     const theme = useTheme();
 
     return (
-        <Container sx={{ display: `flex`, width: props.sidebar ? `calc(100% - 250px)` : `100%`, overflow: `wrap`, marginTop: theme.spacing(12),
+        <Container sx={{ display: `flex`, width: props.sidebar ? `calc(100% - 250px)` : `100%`, maxWidth: `90vh`, overflow: `wrap`, marginTop: theme.spacing(12),
             [theme.breakpoints.down("xl")]: {
                 marginLeft: props.sidebar ? `250px`: '0',
+                maxWidth: `none`
+            },
+            [theme.breakpoints.down("sm")]: {
+                marginLeft: props.sidebar ? `0`: '0',
+                width: `100%`,
             },
         }}>
             {props.children}

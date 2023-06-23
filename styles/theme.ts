@@ -55,6 +55,20 @@ const theme = createTheme({
             fontSize: `40px !important`,
             color: `#2D3748 !important`,
             fontWeight: 600,
+        },
+        caption: {
+            fontSize: `13px !important`,
+            fontWeight: 300,
+        },
+        body1: {
+            fontSize: `16px !important`,
+            color: `#2D3748 !important`,
+            fontWeight: 500,
+        },
+        body2: {
+            fontSize: `15px !important`,
+
+            fontWeight: `300 !important`,
         }
     }
 });
