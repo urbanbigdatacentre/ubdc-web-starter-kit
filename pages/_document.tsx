@@ -5,13 +5,19 @@ import createEmotionCache from "@/utils/createEmotionCache";
 
 import React from "react";
 import {Box} from "@mui/material";
+import {siteAuthor, siteDescription, siteKeywords} from "@/config/appConfig";
 
 export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
                 <Head>
-
+                    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                    <meta name="viewport" content="initial-scale=1, width=device-width" />
+                    <meta name="theme-color" content="#000000" />
+                    <meta name="description" content={siteDescription} />
+                    <meta name="keywords" content={siteKeywords} />
+                    <meta name="author" content={siteAuthor} />
                 </Head>
 
                 <body>

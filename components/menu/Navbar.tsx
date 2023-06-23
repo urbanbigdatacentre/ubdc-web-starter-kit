@@ -1,12 +1,12 @@
 // Core Navbar component
-import {AppBar, Box, Typography, Toolbar, Button} from "@mui/material";
-import RocketRoundedIcon from "@mui/icons-material/RocketRounded";
+import {AppBar, Box, Typography, Toolbar, Button, Avatar} from "@mui/material";
 import {useTheme} from "@mui/system";
 import Link from "next/link";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import ProfileMenu from "@/components/menu/ProfileMenu";
 import {useUserData} from "@nhost/react";
+import {pathToLogo, siteTag, siteTitle} from "@/config/appConfig";
 
 const Navbar = () => {
 
@@ -18,14 +18,14 @@ const Navbar = () => {
         <Box sx={{position: `fixed`, width: `100%`, top: `0`, backgroundColor: theme.palette.background.paper}}>
             <AppBar sx={{backgroundColor: theme.palette.background.paper, borderBottom: theme.palette.grey[300], boxShadow: `none`}}/>
             <Toolbar sx={{width: `100%`, justifyContent: `space-between`, borderBottom: ` 1px solid ${theme.palette.grey[300]}`,}}>
-                <Box sx={{display: `flex`, alignItems: `center`, gap: theme.spacing(4)}}>
+                <Box sx={{display: `flex`, alignItems: `center`, gap: theme.spacing(2)}}>
                     <Link href={'/'}>
                         {/*// Insert logo here*/}
-                        <Image src={'/ubdc-logo.png'} alt={'Insert your own logo ...'}  width={42} height={30}/>
+                        <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
                     </Link>
-                    <Typography sx={{color: theme.palette.grey[800]}}>UBDC Web App Starter Kit</Typography>
+                    <Typography sx={{color: theme.palette.grey[800]}}>{siteTitle}</Typography>
                     <Box sx={{ backgroundColor: theme.palette.action.hover, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1), borderRadius: `5px`, border: `1px solid ${theme.palette.action.active}` }}>
-                        <Typography variant={'caption'} sx={{color: theme.palette.action.active, fontWeight: 500}}>{'Tag Me'}</Typography>
+                        <Typography variant={'caption'} sx={{color: theme.palette.action.active, fontWeight: 500}}>{siteTag}</Typography>
                     </Box>
                 </Box>
                 <Box sx={{display: `flex`, alignItems: `center`}}>

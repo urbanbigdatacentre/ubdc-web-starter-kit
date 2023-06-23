@@ -1,17 +1,12 @@
 import Head from 'next/head'
 import {Divider, Typography, Stack} from "@mui/material";
-import {useTheme} from "@mui/system";
+import {useTheme} from "@mui/material";
 import authRestricted from "@/components/authRestricted";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
-import SlimContainer from "@/components/layouts/SlimContainer";
 import StandardContainer from "@/components/layouts/StandardContainer";
-import { readFileSync } from 'fs'
 import Link from "next/link";
 import parseMarkdown from "@/utils/parseMarkdown";
-import path from "path";
 import fs from "fs";
-import matter from "gray-matter";
-import {getAllDocPaths, getDocData} from "@/lib/docs";
 
 
 

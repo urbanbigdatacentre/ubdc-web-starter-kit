@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material';
 import theme from "@/styles/theme";
 import {NhostApolloProvider} from "@nhost/react-apollo";
-import {NhostProvider, NhostClient} from "@nhost/react";
+import {NhostProvider, NhostClient} from "@nhost/nextjs";
 import createEmotionCache from "@/utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { UserProvider} from "@/UserProvider";
