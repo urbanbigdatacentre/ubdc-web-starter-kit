@@ -25,7 +25,7 @@ For Deployment
 If you haven't already done so, clone the repository:
 
 ```bash
-git clone 🚨
+git clone -b docs https://github.com/urbanbigdatacentre/ubdc-web-starter-kit.git
 ```
 
 > **In this guide**
