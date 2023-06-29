@@ -8,6 +8,7 @@ export const siteAuthor = 'Your Name';
 export const pathToLogo = '/ubdc-logo.png';
 export const pathToFavicon = '/favicon.ico';
 
+export const githubUrl = 'https://github.com/urbanbigdatacentre/ubdc-web-starter-kit'
 // Change the redirect URL to represent the first doc you want your users to see
 export const redirectPath = '/docs/getting-started/overview'
 // Leave the site tag blank to remove it from the UI.
