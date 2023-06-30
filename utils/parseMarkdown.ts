@@ -11,16 +11,17 @@ const addClasses = require("rehype-add-classes")
 import remarkToc from 'remark-toc'
 
 const parseMarkdown = async (content: string) => {
+
     const processedContent = await unified()
         .use(remarkParse)
         .use(remarkToc)
         .use(remarkPrism, { plugins: [
-
             ], transformInlineCode: true })
         .use(remarkRehype, { allowDangerousHtml: true })
         .use(rehypeRaw)
         .use(rehypeFormat)
         .use(rehypeStringify)
+
         .use(addClasses, {
             pre: 'hljs',
             'h1,h2,h3': 'title',
@@ -30,6 +31,8 @@ const parseMarkdown = async (content: string) => {
         })
         .use(remarkToc)
         .process(content)
+
+    const admonitionOptions = {}
 
     return processedContent.toString();
 }

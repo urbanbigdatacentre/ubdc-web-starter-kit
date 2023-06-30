@@ -41,7 +41,7 @@ const Sidebar = (props: SidebarProps) => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000}}
+                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000}}
             >
                 <MenuIcon />
             </IconButton>
@@ -52,9 +52,14 @@ const Sidebar = (props: SidebarProps) => {
                 ModalProps={{
                     keepMounted: true, // Better open performance on mobile.
                 }}
+                PaperProps={{
+                    sx: {
+                        width: `300px !important`,
+                    }
+                }}
                 sx={{
-                    display: { xs: 'block', sm: 'none' },
-                    width: `250px`,
+                    display: { xs: 'block', md: 'none' },
+                    width: `300px`,
                     backgroundColor: theme.palette.action.white,
                     boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
                     alignItems: `start`,
@@ -68,12 +73,13 @@ const Sidebar = (props: SidebarProps) => {
                 anchor={'left'}
                 variant="permanent"
                 open={mobileOpen}
+
                 onClose={handleDrawerToggle}
                 PaperProps={{
                     sx: {
-                        display: { xs: 'none', sm: 'flex' },
+                        display: { xs: 'none', md: 'flex' },
                         marginTop: `64px`,
-                        width: `300px`,
+                        width: `300px !important`,
                         backgroundColor: theme.palette.action.white,
                         boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
                         alignItems: `start`,

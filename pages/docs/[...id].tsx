@@ -11,8 +11,13 @@ import React from "react";
 import {useRouter} from "next/router";
 import Footer from "@/components/menu/Footer";
 import {siteAuthor, siteDescription, siteKeywords} from "@/config/appConfig";
+import { serialize } from "next-mdx-remote/serialize"
+import {MDXRemote, MDXRemoteSerializeResult} from "next-mdx-remote";
+import * as fs from "fs";
+import remarkPrism from "remark-prism";
 
 interface DocProps {
+    source: MDXRemoteSerializeResult
     docData: {
         id: string;
         fullPath: string;
@@ -45,7 +50,7 @@ const Doc = (props : DocProps) => {
                 <meta name="author" content={siteAuthor} />
             </Head>
             <StandardContainer sidebar>
-                <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: `100%`, marginTop: { xs: theme.spacing(5), sm: 0 },}}>
+                <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: `100%`, marginTop: { xs: theme.spacing(5), md: 0 },}}>
                     <Box sx={{backgroundColor: theme.palette.action.hover, border: `1px dashed ${theme.palette.action.active}`, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
                         <Typography variant={'body2'} sx={{color: theme.palette.action.active, fontWeight: 500, textTransform: `capitalize`}}>{router.asPath.split('/')[2].split('#')[0]}</Typography>
                     </Box>
@@ -56,7 +61,9 @@ const Doc = (props : DocProps) => {
                         <Typography variant={'caption'} sx={{color: theme.palette.grey[900]}}>{doc.author}</Typography>
                     </Box>
 
-                    <div dangerouslySetInnerHTML={{ __html: doc.contentHtml }} style={{paddingBottom: theme.spacing(4), width: `100%`, display: `flex`, flexDirection: `column`, gap: theme.spacing(1)}} />
+
+                    <MDXRemote {...props.source} />
+
                     <Footer/>
                 </Stack>
             </StandardContainer>
@@ -83,11 +90,20 @@ export async function getStaticProps({params}: Params) {
         const docData = await getDocData(params['id']);
         const docFileStructure = await getFileStructure();
         const docPaths = await getAllDocPaths();
+        const source = fs.readFileSync(`docs/${params['id'].join('/')}.md`)
+        const mdxSource = await serialize(source, {
+            parseFrontmatter: true,
+            mdxOptions: {
+                // rehypePlugins: [rehypeHighlight],
+                remarkPlugins: [[remarkPrism, {transformInlineCode: true}]],
+            }
+        });
         return {
             props: {
+                source: mdxSource,
                 docData,
                 docPaths,
-                docFileStructure
+                docFileStructure,
             },
         };
     }
