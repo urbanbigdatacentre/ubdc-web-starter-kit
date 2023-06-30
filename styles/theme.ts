@@ -52,7 +52,7 @@ const theme = createTheme({
             fontFamily: `Poppins !important`,
         },
         h1: {
-            fontSize: `40px !important`,
+            fontSize: `36px !important`,
             color: `#2D3748 !important`,
             fontWeight: 600,
         },

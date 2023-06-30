@@ -2,6 +2,7 @@
 title: Components
 author: andrew.c.clarke@glasgow.ac.uk
 category: examples
+tags: [components, markdown]
 ---
 
 #### Table of Contents

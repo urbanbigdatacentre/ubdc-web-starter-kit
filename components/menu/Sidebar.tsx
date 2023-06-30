@@ -119,12 +119,12 @@ const SideBarContent = (props: SidebarProps) => {
 
 
             return (
-                <Stack sx={{gap: theme.spacing(1), paddingLeft: theme.spacing(2), paddingTop: theme.spacing(3), paddingRight: theme.spacing(2), width: `100%`}}>
+                <Stack sx={{ paddingLeft: theme.spacing(2), paddingTop: theme.spacing(3), paddingRight: theme.spacing(2), width: `100%`}}>
                     <Box sx={{display: `flex`, gap: theme.spacing(1)}}>
                         <Avatar alt="UBDC Logo" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>
                         <Typography variant={'h6'} sx={{marginBottom: theme.spacing(2)}}>Docs</Typography>
                     </Box>
-                    <Stack sx={{display: `flex`, gap: theme.spacing(1), width: `100%`, padding: 0}}>
+                    <Stack sx={{display: `flex`, width: `100%`, padding: 0}}>
                         {
                             props.fileStructure['children'].map((item: FileStructureProps, index: Index) => {
                                 if (item['name'].includes('md')) {
@@ -141,7 +141,7 @@ const SideBarContent = (props: SidebarProps) => {
                                     )
                                 } else {
                                     return (
-                                        <Accordion disableGutters elevation={0} square key={index} sx={{display: `flex`, gap: theme.spacing(2),  flexDirection: `column`, padding: 0, width: `100%`,
+                                        <Accordion disableGutters elevation={0} square key={index} sx={{display: `flex`, gap: theme.spacing(2),  flexDirection: `column`, padding: 0, width: `100%`, marginBottom: theme.spacing(1),
                                             '&:before': {
                                                 display: 'none',
                                             },}} >

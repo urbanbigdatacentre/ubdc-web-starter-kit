@@ -305,17 +305,6 @@
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
 
-"@microflash/remark-callout-directives@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@microflash/remark-callout-directives/-/remark-callout-directives-1.5.0.tgz"
-  integrity sha512-uSiq0saSRqvmMsEG7LurPeJ/JizQ8e1PvxPz1pILi/g7HZ30zlddGPPSapcVTAaahraUNHv84YTKdZ85DumWMw==
-  dependencies:
-    defu "^6.1.1"
-    hast-util-from-html "^1.0.0"
-    hastscript "^7.1.0"
-    mdast-util-from-markdown "^1.2.0"
-    unist-util-visit "^4.1.1"
-
 "@mui/base@5.0.0-alpha.127":
   version "5.0.0-alpha.127"
   resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.127.tgz"
@@ -1523,11 +1512,6 @@ define-properties@^1.1.3, define-properties@^1.1.4, define-properties@^1.2.0:
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
 
-defu@^6.1.1:
-  version "6.1.2"
-  resolved "https://registry.npmjs.org/defu/-/defu-6.1.2.tgz"
-  integrity sha512-+uO4+qr7msjNNWKYPHqN/3+Dx3NFkmIzayk2L1MyZQlvgZb/J1A0fo410dpKrN2SnqFjt8n4JL8fDJE0wIgjFQ==
-
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
@@ -1616,11 +1600,6 @@ enhanced-resolve@^5.12.0, enhanced-resolve@^5.15.0:
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
-
-entities@^4.4.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/entities/-/entities-4.5.0.tgz"
-  integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
 
 error-ex@^1.3.1:
   version "1.3.2"
@@ -2408,17 +2387,6 @@ hast-util-embedded@^2.0.0:
   dependencies:
     hast-util-is-element "^2.0.0"
 
-hast-util-from-html@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/hast-util-from-html/-/hast-util-from-html-1.0.2.tgz"
-  integrity sha512-LhrTA2gfCbLOGJq2u/asp4kwuG0y6NhWTXiPKP+n0qNukKy7hc10whqqCFfyvIA1Q5U5d0sp9HhNim9gglEH4A==
-  dependencies:
-    "@types/hast" "^2.0.0"
-    hast-util-from-parse5 "^7.0.0"
-    parse5 "^7.0.0"
-    vfile "^5.0.0"
-    vfile-message "^3.0.0"
-
 hast-util-from-parse5@^7.0.0:
   version "7.1.2"
   resolved "https://registry.npmjs.org/hast-util-from-parse5/-/hast-util-from-parse5-7.1.2.tgz"
@@ -2576,7 +2544,7 @@ hast-util-whitespace@^2.0.0:
   resolved "https://registry.npmjs.org/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz"
   integrity sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==
 
-hastscript@^7.0.0, hastscript@^7.1.0:
+hastscript@^7.0.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/hastscript/-/hastscript-7.2.0.tgz"
   integrity sha512-TtYPq24IldU8iKoJQqvZOuhi5CyCQRAbvDOX0x1eW6rsHSxa/1i2CCiptNTotGHJ3VoHRGmqiv6/D3q113ikkw==
@@ -3949,13 +3917,6 @@ parse5@^6.0.0, parse5@^6.0.1, parse5@6.0.1:
   resolved "https://registry.npmjs.org/parse5/-/parse5-6.0.1.tgz"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
-parse5@^7.0.0:
-  version "7.1.2"
-  resolved "https://registry.npmjs.org/parse5/-/parse5-7.1.2.tgz"
-  integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
-  dependencies:
-    entities "^4.4.0"
-
 path-exists@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz"
@@ -4265,6 +4226,15 @@ rehype-stringify@^9.0.3:
     "@types/hast" "^2.0.0"
     hast-util-to-html "^8.0.0"
     unified "^10.0.0"
+
+remark-callouts@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/remark-callouts/-/remark-callouts-2.0.0.tgz"
+  integrity sha512-kTtBca6NzVNVn71wKMBiliSS/XEtYr6CQgWFQt+s6lkqtHHwHsfP4PxsqFbL98m9nxqlnqTyoYfNr1//u9jrlA==
+  dependencies:
+    mdast-util-from-markdown "^1.2.0"
+    svg-parser "^2.0.4"
+    unist-util-visit "^4.1.0"
 
 remark-directive@^2.0.1:
   version "2.0.1"
@@ -4719,6 +4689,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+svg-parser@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/svg-parser/-/svg-parser-2.0.4.tgz"
+  integrity sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==
+
 symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
@@ -5020,7 +4995,7 @@ unist-util-visit-parents@^5.0.0, unist-util-visit-parents@^5.1.1, unist-util-vis
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit@^4.0.0, unist-util-visit@^4.1.1:
+unist-util-visit@^4.0.0, unist-util-visit@^4.1.0:
   version "4.1.2"
   resolved "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-4.1.2.tgz"
   integrity sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==

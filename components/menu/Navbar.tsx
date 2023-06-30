@@ -11,7 +11,7 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <Box sx={{position: `fixed`, width: `100%`, top: `0`, backgroundColor: theme.palette.background.paper}}>
+        <Box sx={{position: `fixed`, width: `100%`, top: `0`, backgroundColor: theme.palette.background.paper, zIndex: 1000000}}>
             <AppBar sx={{backgroundColor: theme.palette.background.paper, borderBottom: theme.palette.grey[300], boxShadow: `none`}}/>
             <Toolbar sx={{width: `100%`, justifyContent: `space-between`, borderBottom: ` 1px solid ${theme.palette.grey[300]}`,}}>
                 <Box sx={{display: `flex`, alignItems: `center`, gap: theme.spacing(2)}}>

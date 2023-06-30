@@ -5,10 +5,23 @@ h1, h2, h3, h4, h5, h6 {
     color: #4A5568 !important
 }
 
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
+code > .blockquote {
+    padding: 0;
+    background: none;
 }
+
+.blockquote {
+    background: none;
+}
+
+.callout-content {
+    background: #FAFAFA;
+}
+
+/*hr {*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
 p {
 
@@ -285,6 +298,5 @@ pre[class*="language-"].line-numbers > code {
     padding-right: 0.8em;
     text-align: right;
 }
-
 
 
