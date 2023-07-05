@@ -4,7 +4,7 @@ import {ParsedUrlQuery} from "querystring";
 import StandardContainer from "@/components/layouts/StandardContainer";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
 import Head from "next/head";
-import {Typography, Stack, Box, Divider, Button} from "@mui/material";
+import {Typography, Stack, Box, Divider} from "@mui/material";
 import {useTheme} from "@mui/system";
 import Sidebar from "@/components/menu/Sidebar";
 import React from "react";
@@ -15,6 +15,7 @@ import { serialize } from "next-mdx-remote/serialize"
 import {MDXRemote, MDXRemoteSerializeResult} from "next-mdx-remote";
 import * as fs from "fs";
 import remarkPrism from "remark-prism";
+import remarkGfm from "remark-gfm";
 import remarkDirective from "remark-directive";
 import callouts from "remark-callouts";
 import remarkToc from "remark-toc";
@@ -115,7 +116,7 @@ export async function getStaticProps({params}: Params) {
             parseFrontmatter: true,
             mdxOptions: {
                 rehypePlugins: [rehypeStringify],
-                remarkPlugins: [[remarkPrism, {transformInlineCode: true}], remarkDirective, callouts, remarkToc ],
+                remarkPlugins: [[remarkPrism, {transformInlineCode: true}], remarkDirective, callouts, remarkToc, remarkGfm ],
             }
         });
         console.log(docData)

@@ -151,6 +151,31 @@ pre[class*="language-"] {
     overflow: auto;
 }
 
+
+/*GITHUB FLAV MARKDOWN */
+
+table {
+    border-collapse: collapse;
+
+}
+
+th, td {
+    border: 1px solid #E2E8F0;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
+td {
+    font-weight: 300;
+}
+
+
+thead {
+    text-align: left;
+}
+
 /* Inline code */
 :not(pre) > code[class*="language-"] {
     padding: .1em;
