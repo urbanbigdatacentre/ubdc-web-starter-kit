@@ -34,3 +34,33 @@ The components are enabled through the `remark-gfm` plugin. See the [remark-gfm 
 | Database | `<your_guid>` |
 | Username | `<your_guid>` |
 | Password | `<your_password>` |
+
+# Tasklist
+-------------------------
+#### Markdown Example
+```markdown
+* [ ] to do
+* [x] done
+```
+#### Component
+* [ ] To do
+* [x] Done
+
+# Strikethrough
+-------------------------
+#### Markdown Example
+```markdown
+~one~ or ~~two~~ tildes.
+```
+#### Component
+~one~ or ~~two~~ tildes.
+
+
+# Auto-linking
+-------------------------
+#### Markdown Example
+```markdown
+www.example.com, https://example.com, and contact@example.com.
+```
+#### Component
+www.example.com, https://example.com, and contact@example.com.
