@@ -22,6 +22,7 @@ import remarkToc from "remark-toc";
 import rehypeStringify from "rehype-stringify";
 import components from "@/components/markdown/ComponentMap";
 import TagBlock from "@/components/markdown/TagBlock";
+import rehypeMermaid from "rehype-mermaidjs";
 
 interface DocProps {
     source: MDXRemoteSerializeResult
@@ -115,11 +116,10 @@ export async function getStaticProps({params}: Params) {
         const mdxSource = await serialize(source, {
             parseFrontmatter: true,
             mdxOptions: {
-                rehypePlugins: [rehypeStringify],
-                remarkPlugins: [[remarkPrism, {transformInlineCode: true}], remarkDirective, callouts, remarkToc, remarkGfm ],
+                rehypePlugins: [rehypeStringify, rehypeMermaid],
+                remarkPlugins: [[remarkPrism, {transformInlineCode: true}], remarkDirective, callouts, remarkToc, remarkGfm],
             }
         });
-        console.log(docData)
         return {
             props: {
                 source: mdxSource,

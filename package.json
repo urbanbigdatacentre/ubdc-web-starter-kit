@@ -33,6 +33,7 @@
     "react-hot-toast": "^2.4.0",
     "rehype-add-classes": "^1.0.0",
     "rehype-format": "^4.0.1",
+    "rehype-mermaidjs": "^1.0.1",
     "rehype-raw": "^6.1.1",
     "rehype-stringify": "^9.0.3",
     "remark-callouts": "^2.0.0",
