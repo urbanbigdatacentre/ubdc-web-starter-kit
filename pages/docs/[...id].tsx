@@ -36,7 +36,6 @@ interface DocProps {
         docsDirectoryContents: string | string[];
     }
     docFileStructure: Object;
-
 }
 
 
