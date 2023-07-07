@@ -40,6 +40,26 @@ This is a paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 #### Component
 This is a paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
+# Bold Text
+-------------------------
+#### Markdown Example
+```markdown
+This is bold text. **Lorem ipsum dolor sit amet, consectetur adipiscing elit.** __Lorem ipsum dolor sit amet, consectetur adipiscing elit.__
+``` 
+
+#### Component
+This is bold text. **Lorem ipsum dolor sit amet, consectetur adipiscing elit.** __Lorem ipsum dolor sit amet, consectetur adipiscing elit.__
+
+# Italic Text
+-------------------------
+#### Markdown Example
+```markdown
+This is italic text. *Lorem ipsum dolor sit amet, consectetur adipiscing elit.* _Lorem ipsum dolor sit amet, consectetur adipiscing elit._
+``` 
+
+#### Component
+This is italic text. *Lorem ipsum dolor sit amet, consectetur adipiscing elit.* _Lorem ipsum dolor sit amet, consectetur adipiscing elit._
+
 # List
 -------------------------
 #### Markdown Example
