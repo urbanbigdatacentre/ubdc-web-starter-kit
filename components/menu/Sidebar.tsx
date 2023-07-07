@@ -121,7 +121,7 @@ const SideBarContent = (props: SidebarProps) => {
             return (
                 <Stack sx={{ paddingLeft: theme.spacing(2), paddingTop: theme.spacing(3), paddingRight: theme.spacing(2), width: `100%`}}>
                     <Box sx={{display: `flex`, gap: theme.spacing(1)}}>
-                        <Avatar alt="UBDC Logo" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>
+                        <Avatar alt="Docs Icon" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>
                         <Typography variant={'h6'} sx={{marginBottom: theme.spacing(2)}}>Docs</Typography>
                     </Box>
                     <Stack sx={{display: `flex`, width: `100%`, padding: 0}}>

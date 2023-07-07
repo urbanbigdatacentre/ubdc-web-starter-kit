@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cache-posts": "node .next/server/cache.js",
+    "pre-commit": "yarn cache-posts && git add cache/blog.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
