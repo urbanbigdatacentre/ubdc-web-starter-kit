@@ -1,7 +1,7 @@
 // Search Component - Allows users to search for content across the site
 // - This is the component that will be used as a popover
 
-import {TextField, Box} from "@mui/material";
+import {TextField, Box, IconButton} from "@mui/material";
 import {InputAdornment} from "@mui/material";
 import React from "react";
 import {useTheme} from "@mui/system";
@@ -21,21 +21,35 @@ const Search = () => {
     return (
         <Box>
             <TextField
+                autoComplete='off'
                 onClick={handleClick}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                            <SearchRounded sx={{color: theme.palette.grey[400]}} />
+                            <SearchRounded sx={{color: theme.palette.grey[500]}} />
                         </InputAdornment>
                     ),
                 }}
-                sx={{...SearchStyles}}
+                sx={{...SearchStyles, [theme.breakpoints.down('md')]: {
+                        display: `none`
+                    },}}
                 hiddenLabel
                 id="filled-hidden-label-small"
                 placeholder="Search"
                 variant="filled"
                 size="small"
             />
+            <IconButton sx={{
+                display: `none`,
+                height: 35,
+                width: 35,
+                backgroundColor: theme.palette.action.hover,
+                [theme.breakpoints.down('md')]: {
+                    display: `flex`
+                },
+            }} onClick={handleClick}>
+                <SearchRounded sx={{color: theme.palette.grey[500]}} />
+            </IconButton>
             <SearchPopover open={searchOpen} setOpen={setSearchOpen}/>
             <PopoverBackground open={searchOpen} setOpen={setSearchOpen}/>
         </Box>

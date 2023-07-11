@@ -29,9 +29,19 @@ const Navbar = (props: NavbarProps) => {
                         <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
                     </Link>
                     <Typography sx={{color: theme.palette.grey[800]}}>{siteTitle}</Typography>
-                    <Box sx={{ backgroundColor: theme.palette.action.hover, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1), borderRadius: `5px`, border: `1px solid ${theme.palette.action.active}` }}>
-                        <Typography variant={'caption'} sx={{color: theme.palette.action.active, fontWeight: 500}}>{siteTag}</Typography>
-                    </Box>
+                    {siteTag ? <Box sx={{
+                        backgroundColor: theme.palette.action.hover,
+                        paddingLeft: theme.spacing(1),
+                        paddingRight: theme.spacing(1),
+                        borderRadius: `5px`,
+                        border: `1px solid ${theme.palette.action.active}`,
+                        [theme.breakpoints.down('md')]: {
+                            display: `none`
+                        }
+                    }}>
+                        <Typography variant={'caption'}
+                                    sx={{color: theme.palette.action.active, fontWeight: 500}}>{siteTag}</Typography>
+                    </Box> : <></>}
                 </Box>
 
                 {/*RIGHT HAND SIDE*/}

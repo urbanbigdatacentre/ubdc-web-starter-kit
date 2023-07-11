@@ -51,7 +51,6 @@ const Doc = (props : DocProps) => {
     // @ts-ignore
     return (
         <BasePageComponents>
-            <Sidebar fileStructure={fileStructure}/>
             <Head>
                 <title>{doc.title}</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -62,7 +61,8 @@ const Doc = (props : DocProps) => {
                 <meta name="author" content={siteAuthor} />
             </Head>
             <StandardContainer sidebar>
-                <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: `100%`, marginTop: { xs: theme.spacing(5), md: 0 },}}>
+                <Sidebar fileStructure={fileStructure}/>
+                <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: {md: `calc(100% - 300px)`, sm: `100%`}, marginTop: { xs: theme.spacing(5), md: 0 },}}>
 
                     <Box sx={{backgroundColor: theme.palette.action.hover, border: `1px dashed ${theme.palette.action.active}`, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
                         <Typography variant={'body2'} sx={{color: theme.palette.action.active, fontWeight: 500, textTransform: `capitalize`}}>{router.asPath.split('/')[2].split('#')[0]}</Typography>

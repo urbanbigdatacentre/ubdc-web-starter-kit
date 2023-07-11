@@ -19,6 +19,7 @@ import {Index} from "unist-util-visit-parents";
 import {ExpandMore} from "@mui/icons-material";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import {useRouter} from "next/router";
+import {sidebarTitle} from "@/config/appConfig";
 
 interface SidebarProps {
     fileStructure: Object;
@@ -54,12 +55,13 @@ const Sidebar = (props: SidebarProps) => {
                 }}
                 PaperProps={{
                     sx: {
-                        width: `300px !important`,
+                        width: `250px !important`,
+                        paddingTop: theme.spacing(4),
                     }
                 }}
                 sx={{
                     display: { xs: 'block', md: 'none' },
-                    width: `300px`,
+                    width: `200px`,
                     backgroundColor: theme.palette.action.white,
                     boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
                     alignItems: `start`,
@@ -69,28 +71,13 @@ const Sidebar = (props: SidebarProps) => {
             >
                 <SideBarContent fileStructure={props.fileStructure} />
             </Drawer>
-            <Drawer
-                anchor={'left'}
-                variant="permanent"
-                open={mobileOpen}
-
-                onClose={handleDrawerToggle}
-                PaperProps={{
-                    sx: {
-                        display: { xs: 'none', md: 'flex' },
-                        marginTop: `64px`,
-                        width: `300px !important`,
-                        backgroundColor: theme.palette.action.white,
-                        boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
-                        alignItems: `start`,
-                        justifyContent: `space-between`,
-                        boxSizing: 'border-box',
-                    }
-                }}
-
-            >
+            <Box sx={{minWidth: `300px`, marginRight: theme.spacing(2),
+                [theme.breakpoints.down('md')]: {
+                    display: `none`
+                },
+            }}>
                 <SideBarContent fileStructure={props.fileStructure} />
-            </Drawer>
+            </Box>
         </Box>
     )
 }
@@ -119,11 +106,16 @@ const SideBarContent = (props: SidebarProps) => {
 
 
             return (
-                <Stack sx={{ paddingLeft: theme.spacing(2), paddingTop: theme.spacing(3), paddingRight: theme.spacing(2), width: `100%`}}>
-                    <Box sx={{display: `flex`, gap: theme.spacing(1)}}>
-                        <Avatar alt="Docs Icon" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>
-                        <Typography variant={'h6'} sx={{marginBottom: theme.spacing(2)}}>Docs</Typography>
-                    </Box>
+                <Stack sx={{ paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2), width: `100%`}}>
+                    {sidebarTitle ? <Box sx={{
+                        display: `flex`,
+                        gap: theme.spacing(1),
+                        alignItems: `center`,
+                        marginBottom: theme.spacing(2)
+                    }}>
+                        {/*<Avatar alt="Docs Icon" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>*/}
+                        <Typography variant={'h6'}>{sidebarTitle}</Typography>
+                    </Box> : <></>}
                     <Stack sx={{display: `flex`, width: `100%`, padding: 0}}>
                         {
                             props.fileStructure['children'].map((item: FileStructureProps, index: Index) => {
@@ -135,7 +127,7 @@ const SideBarContent = (props: SidebarProps) => {
                                                 color: theme.palette.grey[900],
                                             },
                                         }} onClick={() => router.push(`/${item.path.replace('.md', '')}`)}>
-                                            <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`}}>{item.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
+                                            <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`, textDecoration: `underline`}}>{item.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
                                             <ArrowForwardRoundedIcon style={{fontSize: 18}}/>
                                         </Button>
                                     )
@@ -145,13 +137,13 @@ const SideBarContent = (props: SidebarProps) => {
                                             '&:before': {
                                                 display: 'none',
                                             },}} >
-                                            <AccordionSummary sx={{display: `flex`, justifyContent: `space-between`, padding: 0, width: `100%`}} expandIcon={<ExpandMore/>} aria-controls={`accordion-${index}`} id={`accordion-${index}-header`}>
+                                            <AccordionSummary sx={{display: `flex`, justifyContent: `space-between`, padding: 0, width: `100%`}} expandIcon={<ExpandMore style={{color: theme.palette.grey[900]}}/>} aria-controls={`accordion-${index}`} id={`accordion-${index}-header`}>
                                             <Box sx={{backgroundColor: theme.palette.action.hover, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
-                                                <Typography variant={'body2'} sx={{color: theme.palette.action.active, fontWeight: 500, fontFamily: `JetBrains Mono !important`, textTransform: `capitalize`}}>{item['name']}</Typography>
+                                                <Typography variant={'body2'} sx={{color: theme.palette.grey[900], fontWeight: 500, fontFamily: `JetBrains Mono !important`, textTransform: `capitalize`}}>{item.name.replace('_', ' ').replace('-', ' ')}</Typography>
                                             </Box>
                                             </AccordionSummary>
 
-                                            <AccordionDetails sx={{display: `flex`, flexDirection: `column`, padding: 0, gap: theme.spacing(2)}}>
+                                            <AccordionDetails sx={{display: `flex`, flexDirection: `column`, padding: 0, gap: theme.spacing(2), marginBottom: theme.spacing(2)}}>
                                             {
                                                 item.children.map((innerItem: any, innerIndex: Index) => {
                                                     if (innerItem['name'].includes('md')) {
@@ -161,7 +153,7 @@ const SideBarContent = (props: SidebarProps) => {
                                                                     color: theme.palette.grey[900],
                                                                 },
                                                             }} onClick={() => router.push(`/${innerItem.path.replace('.md', '')}`)}>
-                                                                <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`}}>{innerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
+                                                                <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`, textDecoration: `underline`}}>{innerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
                                                                 <ArrowForwardRoundedIcon style={{fontSize: 18}} />
                                                             </Button>
                                                         )
@@ -171,12 +163,12 @@ const SideBarContent = (props: SidebarProps) => {
                                                                 '&:before': {
                                                                     display: 'none',
                                                                 },}} >
-                                                                <AccordionSummary sx={{display: `flex`, justifyContent: `space-between`, padding: 0, width: `100%`}} expandIcon={<ExpandMore/>} aria-controls={`accordion-${index}`} id={`accordion-${index}-header`}>
+                                                                <AccordionSummary sx={{display: `flex`, justifyContent: `space-between`, padding: 0, width: `100%`}} expandIcon={<ExpandMore style={{color: theme.palette.grey[900]}}/>} aria-controls={`accordion-${index}`} id={`accordion-${index}-header`}>
                                                                 <Box sx={{backgroundColor: theme.palette.action.hover, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
-                                                                    <Typography variant={'body2'} sx={{color: theme.palette.action.active, fontWeight: 500, fontFamily: `JetBrains Mono !important`, textTransform: `capitalize`}}>{innerItem['name']}</Typography>
+                                                                    <Typography variant={'body2'} sx={{color: theme.palette.grey[900], fontWeight: 500, fontFamily: `JetBrains Mono !important`, textTransform: `capitalize`}}>{innerItem['name']}</Typography>
                                                                 </Box>
                                                                 </AccordionSummary>
-                                                                <AccordionDetails sx={{display: `flex`, flexDirection: `column`, padding: 0, marginLeft: theme.spacing(2), gap: theme.spacing(2)}}>
+                                                                <AccordionDetails sx={{display: `flex`, flexDirection: `column`, padding: 0, marginLeft: theme.spacing(2), gap: theme.spacing(2), marginBottom: theme.spacing(2)}}>
                                                                 {
                                                                     innerItem.children.map((innerInnerItem: FileStructureProps, innerInnerIndex: Index) => {
                                                                         if (innerInnerItem['name'].includes('md')) {
@@ -187,7 +179,7 @@ const SideBarContent = (props: SidebarProps) => {
                                                                                     },
 
                                                                                 }} onClick={() => router.push(`/${innerInnerItem.path.replace('.md', '')}`)}>
-                                                                                    <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`}}>{innerInnerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
+                                                                                    <Typography variant={'body2'} sx={{color: theme.palette.grey[900], textTransform: `capitalize`, textDecoration: `underline`}}>{innerInnerItem.name.replace('_', ' ').replace('-', ' ').replace('.md', '')}</Typography>
                                                                                     <ArrowForwardRoundedIcon style={{fontSize: 18}}/>
                                                                                 </Button>
                                                                             )

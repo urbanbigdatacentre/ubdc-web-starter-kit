@@ -39,6 +39,7 @@ type SearchResultItem = {
 
 }
 
+
 const SearchPopover = (props: SearchPopoverProps) => {
 
     const theme = useTheme();
@@ -65,8 +66,16 @@ const SearchPopover = (props: SearchPopoverProps) => {
         return (
                 <Box sx={{position: `absolute`, display: `flex`, alignItems: `center`, justifyContent: `center`, top: `100%`, left: 0, right: 0, zIndex: 1000000, padding: theme.spacing(2)}}>
                     <ClickAwayListener onClickAway={() => props.setOpen(false)}>
-                    <Stack sx={{width: `60%`, gap: theme.spacing(2), alignItems: `start`, backgroundColor: theme.palette.grey['100'], paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2), borderRadius: `5px`, border: `1px solid ${theme.palette.grey[500]}`}}>
+                    <Stack sx={{width: `60%`, gap: theme.spacing(2), alignItems: `start`, backgroundColor: theme.palette.grey['100'], paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2), borderRadius: `5px`, border: `1px solid ${theme.palette.grey[500]}`,
+                        [theme.breakpoints.down('xl')]: {
+                            width: `80%`
+                        },
+                        [theme.breakpoints.down('lg')]: {
+                            width: `95%`
+                        },
+                    }}>
                         <TextField
+                            autoComplete='off'
                             value={searchValue}
                             InputProps={{
                                 startAdornment: (
@@ -76,7 +85,7 @@ const SearchPopover = (props: SearchPopoverProps) => {
                                 ),
                                 endAdornment: (
                                     <InputAdornment position="end">
-                                        <IconButton onClick={() => setSearchValue('')} sx={{color: theme.palette.grey[700], backgroundColor: theme.palette.action.focus, padding: theme.spacing(.5)}}>
+                                        <IconButton onClick={() => setSearchValue('')} sx={{color: theme.palette.grey[100], backgroundColor: theme.palette.action.focus, padding: theme.spacing(.25)}}>
                                             <Close sx={{fontSize: `1rem`}}/>
                                         </IconButton>
                                     </InputAdornment>
@@ -92,13 +101,14 @@ const SearchPopover = (props: SearchPopoverProps) => {
                         />
 
                         <Divider sx={{width: `100%`}}/>
-                        <Typography variant={'caption'} sx={{color: theme.palette.grey[700], fontWeight: 600, paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2)}}>Docs</Typography>
+                        {/*<Typography variant={'caption'} sx={{color: theme.palette.grey[700], fontWeight: 600, paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2)}}>Docs</Typography>*/}
                         <List sx={{width: `100%`, backgroundColor: `transparent`, border: `none`, maxHeight: `300px`, overflow: `scroll`}} >
                             {
                                 searchResults.map((item: SearchResultItem, index: Index) => {
+                                    console.log(item)
                                     if (item)
                                     return (
-                                        <SearchListItemButton setOpen={props.setOpen} key={index} iconSrc={'/icons/docs.svg'} title={item?.data?.title ? item.data.title : "Test"} src={item.id} content={item.content}/>
+                                        <SearchListItemButton setOpen={props.setOpen} key={index} iconSrc={'/icons/docs.svg'} title={item?.data?.title ? item.data.title : "Test"} src={item.id} content={item.content} category={item?.data?.category} tags={item?.data?.tags ? item.data.tags : []}/>
                                     )
                                 })
                             }

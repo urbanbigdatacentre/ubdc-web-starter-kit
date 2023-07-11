@@ -10,15 +10,8 @@ const StandardContainer = (props : StandardContainerProps) => {
     const theme = useTheme();
 
     return (
-        <Container sx={{ display: `flex`, width: props.sidebar ? `calc(100% - 325px)` : `100%`,  overflow: `wrap`, marginTop: theme.spacing(12), marginLeft: props.sidebar ? `325px` : 0,
-            [theme.breakpoints.up("xl")]: {
-                width: `calc(80% - 325px)`,
-                marginRight: `300px`,
-            },
-            [theme.breakpoints.down("md")]: {
-                marginLeft: props.sidebar ? `0`: '0',
-                width: `100%`,
-            },
+        <Container sx={{ display: `flex`, width: `100%`,  overflow: `wrap`, marginTop: theme.spacing(12), marginRight: 0, marginLeft: 0,
+
         }}>
             {props.children}
         </Container>

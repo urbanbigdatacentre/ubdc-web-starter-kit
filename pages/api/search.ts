@@ -19,7 +19,7 @@ export default async function handler(
       if (index !== -1) {
         return {
           ...doc,
-          content: doc.content.slice(index - 15, index + 15),
+          content: doc.content.slice(index - 5, index + 20),
         };
       } else {
         return null;
