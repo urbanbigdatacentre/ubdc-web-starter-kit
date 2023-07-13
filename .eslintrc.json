@@ -1,3 +1,7 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // make all indantation 4 spaces
+    "indent": ["error", 4]
+  }
 }
