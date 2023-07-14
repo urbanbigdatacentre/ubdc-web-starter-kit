@@ -24,6 +24,7 @@ import components from "@/components/markdown/ComponentMap";
 import TagBlock from "@/components/markdown/TagBlock";
 import rehypeMermaid from "rehype-mermaidjs";
 
+
 interface DocProps {
     source: MDXRemoteSerializeResult
     docData: {
