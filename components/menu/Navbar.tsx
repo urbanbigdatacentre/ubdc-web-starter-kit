@@ -13,7 +13,6 @@ type NavbarProps = {
 const Navbar = (props: NavbarProps) => {
 
     const theme = useTheme();
-    const router = useRouter();
 
     return (
         <Box sx={{position: `fixed`, width: `100%`, top: `0`, backgroundColor: theme.palette.background.paper, zIndex: 1000000}}>
