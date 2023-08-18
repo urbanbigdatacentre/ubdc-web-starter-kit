@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/cache.js && next dev",
-    "build": "node scripts/cache.js && next build",
+    "build": "node scripts/cache.js && npm install @playwright/test && npx playwright install --with-deps chromium && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,6 +15,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.12.2",
+    "@playwright/test": "^1.37.1",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
