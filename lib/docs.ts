@@ -1,5 +1,4 @@
 // Get All Document Files Utility Function
-
 import * as fs from 'fs';
 
 
@@ -51,3 +50,5 @@ function getFiles(path: string) {
         return !fs.statSync(path+'/'+file).isDirectory();
     });
 }
+
+
