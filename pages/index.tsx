@@ -60,4 +60,4 @@ export async function getStaticProps() {
 }
 
 
-export default authRestricted(Home);
+export default Home;

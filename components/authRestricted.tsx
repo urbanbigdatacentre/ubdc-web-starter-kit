@@ -10,6 +10,11 @@ const authRestricted = (WrappedComponent: any) => {
         const router = useRouter();
         const {isAuthenticated, isLoading, isError, error, connectionAttempts} = useAuthenticationStatus();
 
+        // Error
+        if (isError) {
+            console.error(error);
+            // REQUIRES LOGIC HERE
+        }
         // Loading
         if (isLoading) {
             return (
