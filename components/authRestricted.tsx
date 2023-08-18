@@ -8,7 +8,7 @@ const authRestricted = (WrappedComponent: any) => {
 
         const theme = useTheme();
         const router = useRouter();
-        const {isAuthenticated, isLoading, isError, error, connectionAttempts} = useAuthenticationStatus();
+        const {isAuthenticated, isLoading, isError, error} = useAuthenticationStatus();
 
         // Error
         if (isError) {

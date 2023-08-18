@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import {Divider, Typography, Stack} from "@mui/material";
+import {Typography, Stack} from "@mui/material";
 import {useTheme} from "@mui/material";
-import authRestricted from "@/components/authRestricted";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
 import StandardContainer from "@/components/layouts/StandardContainer";
-import Link from "next/link";
 import parseMarkdown from "@/utils/parseMarkdown";
 import fs from "fs";
 
@@ -15,8 +13,7 @@ interface HomeProps {
 
 }
 
-const Home = (props: HomeProps) => {
-    const theme  = useTheme();
+const Home = () => {
 
     return (
         <BasePageComponents>
