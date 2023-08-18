@@ -14,6 +14,6 @@ export const redirectPath = '/docs/getting-started/overview'
 // Leave the site tag blank to remove it from the UI.
 export const siteTag = 'v0.0.1'; // Leave this blank to remove the version tag.
 
-export const sidebarTitle = 'UBDC Docs Starter Kit'; // Leave this blank to remove the sidebar title.
+export const sidebarTitle = 'Documentation'; // Leave this blank to remove the sidebar title.
 
 
