@@ -122,7 +122,7 @@ const SideBarContent = (props: SidebarProps) => {
                                 if (item['name'].includes('md')) {
 
                                     return (
-                                        <Button key={index} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100],
+                                        <Button key={index} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100], marginBottom: theme.spacing(2),
                                             '&:hover': {
                                                 color: theme.palette.grey[900],
                                             },
