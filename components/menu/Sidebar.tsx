@@ -3,7 +3,7 @@ import React from "react";
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary,
+    AccordionSummary, alpha,
     Box,
     Button,
     Drawer,
@@ -40,7 +40,11 @@ const Sidebar = (props: SidebarProps) => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000}}
+                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000,
+                    '&:hover': {
+                        backgroundColor: alpha('#bbdefb', .85),
+                    }
+                }}
             >
                 <MenuIcon />
             </IconButton>

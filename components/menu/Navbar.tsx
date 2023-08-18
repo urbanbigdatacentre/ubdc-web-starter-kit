@@ -1,5 +1,5 @@
 // Core Navbar component
-import {AppBar, Box, Typography, Toolbar, Button, Avatar} from "@mui/material";
+import {AppBar, Box, Typography, Toolbar, Avatar} from "@mui/material";
 import {useTheme} from "@mui/system";
 import Link from "next/link";
 import {useRouter} from "next/router";
