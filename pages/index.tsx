@@ -28,13 +28,8 @@ const Home = (props: HomeProps) => {
             </Head>
 
             <StandardContainer>
-                <Stack sx={{width: `100%`}}>
-                    <Typography variant={'h1'} sx={{color: theme.palette.primary.main, fontFamily: `Poppins !important`}}> 👋 Web Starter Kit </Typography>
-                    <Divider component="div" sx={{margin: theme.spacing(2), width: `100%`}}/>
-                    <Link href={'/docs/getting-started'} passHref>Getting Started</Link>
-
-                    <Typography ></Typography>
-                    <div dangerouslySetInnerHTML={{ __html: props.readMeContent }} />
+                <Stack sx={{width: `100%`, alignItems: `centre`}}>
+                    <Typography variant={'body2'} sx={{textAlign: `center`}}>Pick a service</Typography>
                 </Stack>
             </StandardContainer>
 

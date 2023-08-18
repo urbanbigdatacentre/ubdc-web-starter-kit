@@ -8,6 +8,9 @@ export const siteAuthor = 'Your Name';
 export const pathToLogo = '/ubdc-logo.png';
 export const pathToFavicon = '/favicon.ico';
 
+// Change the redirect URL to represent the first doc you want your users to see
+export const redirectPath = '/docs/getting-started/overview'
+
 // Leave the site tag blank to remove it from the UI.
 export const siteTag = 'v0.0.1';
 
