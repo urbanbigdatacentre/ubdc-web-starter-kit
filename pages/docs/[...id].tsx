@@ -1,5 +1,5 @@
 // Component to render a single document from markdown files located in root/docs
-import {getAllDocPaths, getAllDocs, getFileStructure} from "@/lib/docs";
+import {getAllDocs, getFileStructure} from "@/lib/docs";
 import {ParsedUrlQuery} from "querystring";
 import StandardContainer from "@/components/layouts/StandardContainer";
 import BasePageComponents from "@/components/layouts/BasePageComponents";
@@ -110,7 +110,7 @@ export async function getStaticProps({params}: Params) {
     if (params != null) {
 
         const docFileStructure = await getFileStructure();
-        const docPaths = await getAllDocPaths();
+
         const source = fs.readFileSync(`docs/${params['id'].join('/')}.md`)
         const mdxSource = await serialize(source, {
             parseFrontmatter: true,
@@ -122,7 +122,6 @@ export async function getStaticProps({params}: Params) {
         return {
             props: {
                 source: mdxSource,
-                docPaths,
                 docFileStructure,
             },
         };
