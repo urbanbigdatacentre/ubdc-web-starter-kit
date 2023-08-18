@@ -4,15 +4,13 @@ import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
-    Avatar,
     Box,
     Button,
-    Drawer, Icon,
+    Drawer,
     Stack,
     Typography
 } from "@mui/material";
 import {useTheme} from "@mui/system";
-import Link from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
 import {IconButton} from "@mui/material";
 import {Index} from "unist-util-visit-parents";
