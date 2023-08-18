@@ -23,7 +23,6 @@ This is a starter kit for bootstrapping a full stack application.
 - [x] Next.js (Typescript) - _Frontend client_
 - [x] Apollo Client - _GraphQL client (caching)_
 - [x] Material UI - _UI components_
-- [x] React Hook Form - _Rendering Markdown_
 - [x] Yarn - _Package manager_
 - [x] Docker - _Containerisation_
 - [x] Nhost - _Dockerised backend as a service_
@@ -32,7 +31,6 @@ This is a starter kit for bootstrapping a full stack application.
   - Auth - _Authentication_
   - Storage - _File storage_
   - Functions - _Serverless functions_
-  - Adminer - _Database management_
   - Mailhog - _Email testing_
 
 ## Getting Started
