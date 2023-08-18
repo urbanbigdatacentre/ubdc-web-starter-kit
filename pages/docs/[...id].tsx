@@ -116,7 +116,7 @@ export async function getStaticProps({params}: Params) {
             parseFrontmatter: true,
             mdxOptions: {
                 rehypePlugins: [rehypeStringify, rehypeMermaid],
-                remarkPlugins: [[remarkPrism, {transformInlineCode: true}], remarkDirective, callouts, remarkToc, remarkGfm],
+                remarkPlugins: [[remarkPrism, {transformInlineCode: true, plugins: ['line-numbers']}], remarkDirective, callouts, remarkToc, remarkGfm],
             }
         });
         return {
