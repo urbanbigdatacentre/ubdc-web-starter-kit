@@ -51,18 +51,3 @@ function getFiles(path: string) {
         return !fs.statSync(path+'/'+file).isDirectory();
     });
 }
-
-export function getAllDocPaths() {
-    const docsDirectory = 'docs';
-    const fileNames = fs.readdirSync(docsDirectory);
-
-
-    return fileNames.map((fileName: string) => {
-
-        return {
-            params: {
-                id: [fileName.replace(/\.md$/, '')],
-            },
-        };
-    });
-}
