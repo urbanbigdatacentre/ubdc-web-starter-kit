@@ -66,8 +66,8 @@ const theme = createTheme({
             fontWeight: 500,
         },
         body2: {
-            fontSize: `15px !important`,
-            fontWeight: `300 !important`,
+            fontSize: `14px !important`,
+            fontWeight: `400 !important`,
         },
     }
 });
