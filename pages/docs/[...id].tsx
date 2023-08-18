@@ -10,7 +10,7 @@ import Sidebar from "@/components/menu/Sidebar";
 import React from "react";
 import {useRouter} from "next/router";
 import Footer from "@/components/menu/Footer";
-import {siteAuthor, siteDescription, siteKeywords} from "@/config/appConfig";
+import {siteAuthor, siteDescription, siteKeywords, siteTitle} from "@/config/appConfig";
 import { serialize } from "next-mdx-remote/serialize"
 import {MDXRemote, MDXRemoteSerializeResult} from "next-mdx-remote";
 import * as fs from "fs";
@@ -47,8 +47,7 @@ const Doc = (props : DocProps) => {
     const router = useRouter();
     const frontMatter = props.source.frontmatter;
 
-    // @ts-ignore
-    // @ts-ignore
+
     return (
         <BasePageComponents>
             <Head>
@@ -71,7 +70,7 @@ const Doc = (props : DocProps) => {
                     <Divider component="div" sx={{width: `100%`}}/>
                     <Stack sx={{gap: theme.spacing(2)}}>
                         <Box sx={{display: `flex`, width: `100%`, justifyContent: `space-between`, flexWrap: `wrap`, gap: theme.spacing(1) }}>
-                            <Typography variant={'caption'} sx={{color: theme.palette.grey[600]}}>{window.location.href.split('/').slice(3).join('/')}</Typography>
+                            <Typography variant={'caption'} sx={{color: theme.palette.grey[600]}}>{siteTitle}</Typography>
                             <Typography variant={'caption'} sx={{color: theme.palette.grey[900]}}>{frontMatter.author}</Typography>
                         </Box>
                         <Box sx={{display: `flex`, gap: theme.spacing(1)}}>
