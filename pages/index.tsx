@@ -6,12 +6,23 @@ import {services} from "@/config/serviceDefinition";
 import {useTheme} from "@mui/system";
 import {siteDescription, siteTitle} from "@/config/appConfig";
 import LandingServiceButton from "@/components/buttons/landingServiceButton";
-import {useState} from "react";
+import React, {useState} from "react";
+import {useRouter} from "next/router";
+import {toast, Toaster} from "react-hot-toast";
 
 const Home = () => {
 
     const theme = useTheme();
+    const router = useRouter();
     const [selectedValue, setSelectedValue] = useState('');
+
+    const handleContinue = () => {
+        if (selectedValue === '') {
+            toast.error("Please select a service to continue.");
+            return;
+        }
+        router.push(`/services/${selectedValue}`);
+    }
 
     return (
         <BasePageComponents>
@@ -23,6 +34,11 @@ const Home = () => {
             </Head>
 
             <StandardContainer>
+                <Toaster toastOptions={{
+                    style: {
+                        fontFamily: `Poppins !important`,
+                    },
+                }}/>
                 <Stack sx={{width: `100%`, alignItems: `center`}}>
                     <Typography variant={'body1'} sx={{textAlign: `center`}}>Pick a service</Typography>
                     <Typography variant={'caption'} sx={{textAlign: `center`}}>The following services are offered by this starter kit. Choose one to try it out!</Typography>
@@ -38,7 +54,7 @@ const Home = () => {
                         }
                     </Box>
 
-                    <Button sx={{maxWidth: `250px`, marginTop: theme.spacing(4)}} variant={'contained'}>Continue</Button>
+                    <Button onClick={handleContinue} sx={{maxWidth: `250px`, marginTop: theme.spacing(4)}} variant={'contained'}>Continue</Button>
                 </Stack>
             </StandardContainer>
 

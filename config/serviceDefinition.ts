@@ -5,17 +5,20 @@ import {redirectPath} from "@/config/appConfig";
 export const services = [
     {
         name: 'About this project',
-        path: '/about',
-        icon: 'info'
+        path: '/docs/about-this-project',
+        icon: '/icons/info.svg',
+        description: 'Learn more about this project and how to use it.'
     },
     {
         name: 'Documentation',
         path: redirectPath,
-        icon: 'home'
+        icon: '/icons/docs.svg',
+        description: 'Site docs generated from markdown content.'
     },
     {
         name: 'Auth',
         path: '/auth/sign-in',
-        icon: 'lock'
+        icon: '/icons/user.svg',
+        description: 'User authentication and authorization.'
     },
 ]

@@ -27,18 +27,17 @@ const LandingServiceButton = (props: LandingServiceButtonProps) => {
                 border: `1px solid ${theme.palette.action.active}`
             }
         }}
-        onClick={() => props.handleChange(props.service.name)}
+        onClick={() => props.handleChange(props.service.path)}
         >
-            <Avatar sx={{width: `50px`, height: `50px`}} src={props.service.icon} />
+            <Avatar variant={'circular'} sx={{width: `50px`, height: `50px`, marginBottom: theme.spacing(1), backgroundColor: theme.palette.action.hover, padding: 1}} src={props.service.icon} />
             <Typography variant={'body1'}>{props.service.name}</Typography>
             <Typography variant={'caption'} sx={{textAlign: `center`}}>{props.service.description}</Typography>
             <Radio
-
-                checked={props.selectedValue === props.service.name}
-                onChange={() => props.handleChange(props.service.name)}
-                value={props.service.name}
+                checked={props.selectedValue === props.service.path}
+                onChange={() => props.handleChange(props.service.path)}
+                value={props.service.path}
                 name="radio-buttons"
-                inputProps={{ 'aria-label': props.service.name }}
+                inputProps={{ 'aria-label': props.service.path }}
             />
         </Stack>
     )
