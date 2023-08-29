@@ -26,7 +26,7 @@ const theme = createTheme({
     },
     palette: {
         primary: {
-            main: '#556cd6',
+            main: '#3793EF',
         },
         action: {
             active: '#3793EF',

@@ -1,9 +1,15 @@
 ---
-title: README
-slug: readme
+title: About this Project
+author: andrew.c.clarke@glasgow.ac.uk
+category: readme
+tags: [template, web, starter kit, UBDC]
 ---
 
-## UBDC Web Starter Kit
+<div>
+
+[//]: # (<img style="padding: 10px; width: 20%; border-radius: 10px; background-color: white;" width=100% src="https://www.gla.ac.uk/media/Media_709271_smxx.jpg">)
+<h2 align="left">UBDC Web App Starter Kit</h2>
+</div>
 
 ![TypeScript](https://img.shields.io/badge/Typescript-5.0.4-red.svg)
 ![Next.JS](https://img.shields.io/badge/Next.js-13.3.1-yellow.svg)
@@ -22,10 +28,10 @@ This is a starter kit for bootstrapping a full stack application.
 - [x] Yarn - _Package manager_
 - [x] Docker - _Containerisation_
 - [x] Nhost - _Dockerised backend as a service_
-  -  PostgreSQL - _Database_
-  - Hasura - _GraphQL API (Generated Schema)_
-  - Auth - _Authentication_
-  - Mailhog - _Email testing_
+    -  PostgreSQL - _Database_
+    - Hasura - _GraphQL API (Generated Schema)_
+    - Auth - _Authentication_
+    - Mailhog - _Email testing_
 
 ## Getting Started
 Clone this repo and install the dependencies:

@@ -1,33 +1,18 @@
-import React, { useContext } from 'react';
-import { useUserId} from '@nhost/nextjs'
-import {gql, useQuery} from "@apollo/client";
-import {GET_USER_QUERY} from "@/graphql/queries/user";
+import React, { useContext } from 'react'
+// highlight-next-line
+import { useUserData } from '@nhost/nextjs'
 
-const UserContext = React.createContext({});
-
+const UserContext = React.createContext(null as any)
 type UserProviderProps = {
     children: string | JSX.Element | JSX.Element[]
 }
+export function UserProvider( props: UserProviderProps ) {
 
-export function UserProvider(props: UserProviderProps) {
+    const user = useUserData()
 
-    const id = useUserId();
-    const { loading, error, data } = useQuery(GET_USER_QUERY, {
-        variables: { id },
-        skip: !id
-    })
-    const user = data?.user
-    if (error) {
-        return <p>Something went wrong. Try to refresh the page.</p>
-    }
-    if (loading) {
-        return null
-    }
-    return (
-        <UserContext.Provider value={{ user }}>{props.children}</UserContext.Provider>
-);
+    return <UserContext.Provider value={{ user }}>{props.children}</UserContext.Provider>
 }
 
 export function useUserContext() {
-    return useContext(UserContext);
+    return useContext(UserContext)
 }
