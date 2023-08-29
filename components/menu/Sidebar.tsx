@@ -102,7 +102,6 @@ interface FileStructureProps {
 }
 
 const SideBarContent = (props: SidebarProps) => {
-
             const theme = useTheme();
             const router = useRouter();
 
@@ -202,9 +201,11 @@ const SideBarContent = (props: SidebarProps) => {
                                 }
                             })
                         }
-                    </Stack>
-                </Stack>
-            )
+                    })
+                }
+            </Stack>
+        </Stack>
+    )
 }
 
 export default Sidebar;
