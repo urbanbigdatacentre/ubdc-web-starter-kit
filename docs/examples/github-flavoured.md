@@ -22,18 +22,18 @@ The components are enabled through the `remark-gfm` plugin. See the [remark-gfm 
 | --- | --- |
 | Host | `172.20.67.58` |
 | Port | `5432` |
-| Database | `<your_guid>` |
-| Username | `<your_guid>` |
-| Password | `<your_password>` |
+| Database | `db`           |
+| Username | `user`         |
+| Password | `password`     |
 ```
 #### Component
-| Parameter | Value |
-| --- | --- |
+| Parameter | Value          |
+| --- |----------------|
 | Host | `172.20.67.58` |
-| Port | `5432` |
-| Database | `<your_guid>` |
-| Username | `<your_guid>` |
-| Password | `<your_password>` |
+| Port | `5432`         |
+| Database | `db`           |
+| Username | `user`         |
+| Password | `password`     |
 
 # Tasklist
 -------------------------

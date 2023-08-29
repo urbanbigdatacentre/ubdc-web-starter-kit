@@ -68,5 +68,7 @@ try {
 }
 
 fs.writeFile('cache/data.js', cacheDocs(), function (err) {
+
     if (err) return console.log(err);
+    console.log('Docs cached.');
 })

@@ -3,16 +3,14 @@ import React from "react";
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary,
-    Avatar,
+    AccordionSummary, alpha,
     Box,
     Button,
-    Drawer, Icon,
+    Drawer,
     Stack,
     Typography
 } from "@mui/material";
 import {useTheme} from "@mui/system";
-import Link from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
 import {IconButton} from "@mui/material";
 import {Index} from "unist-util-visit-parents";
@@ -42,7 +40,11 @@ const Sidebar = (props: SidebarProps) => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000}}
+                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000,
+                    '&:hover': {
+                        backgroundColor: alpha('#bbdefb', .85),
+                    }
+                }}
             >
                 <MenuIcon />
             </IconButton>
@@ -122,7 +124,7 @@ const SideBarContent = (props: SidebarProps) => {
                                 if (item['name'].includes('md')) {
 
                                     return (
-                                        <Button key={index} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100],
+                                        <Button key={index} sx={{gap: theme.spacing(2), display: `flex`, justifyContent: `space-between`, color: theme.palette.grey[100], marginBottom: theme.spacing(2),
                                             '&:hover': {
                                                 color: theme.palette.grey[900],
                                             },

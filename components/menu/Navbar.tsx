@@ -1,5 +1,5 @@
 // Core Navbar component
-import {AppBar, Box, Typography, Toolbar, Button, Avatar} from "@mui/material";
+import {AppBar, Box, Typography, Toolbar, Avatar} from "@mui/material";
 import {useTheme} from "@mui/system";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -13,7 +13,6 @@ type NavbarProps = {
 const Navbar = (props: NavbarProps) => {
 
     const theme = useTheme();
-    const router = useRouter();
 
     return (
         <Box sx={{position: `fixed`, width: `100%`, top: `0`, backgroundColor: theme.palette.background.paper, zIndex: 1000000}}>
