@@ -21,7 +21,7 @@ const Home = () => {
             toast.error("Please select a service to continue.");
             return;
         }
-        router.push(`/services/${selectedValue}`);
+        router.push(`${selectedValue}`);
     }
 
     return (
