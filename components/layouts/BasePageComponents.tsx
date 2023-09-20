@@ -3,13 +3,14 @@ import {Box} from "@mui/material";
 import Navbar from "@/components/menu/Navbar";
 
 type BasePageComponentsProps = {
-    children: string | JSX.Element | JSX.Element[]
+    children: string | JSX.Element | JSX.Element[],
+    fileStructure?: Object | undefined
 }
 
 const BasePageComponents = (props: BasePageComponentsProps) => {
     return (
         <Box sx={{display: `flex`, alignItems: `center`, justifyContent: `center`}}>
-            <Navbar search/>
+            <Navbar fileStructure={props.fileStructure} search />
             {props.children}
         </Box>
     )

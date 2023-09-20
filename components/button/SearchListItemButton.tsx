@@ -1,6 +1,6 @@
 // Search List Item Button for use in Search Menu
 
-import {Avatar, Button, ListItemButton, ListItemIcon, Typography, Box} from "@mui/material";
+import {Avatar, ListItemButton, ListItemIcon, Typography, Box} from "@mui/material";
 import React from "react";
 import {useTheme} from "@mui/system";
 import {useRouter} from "next/router";
@@ -48,7 +48,7 @@ const SearchListItemButton = (props: SearchListItemButtonProps) => {
                         props?.tags ? props.tags.map((tag: string, index: Index) => {
                             if (index < 1)
                             return (
-                                <Box  key={index} sx={{gap: theme.spacing(1), display: `flex`,
+                                <Box  key={index} sx={{gap: theme.spacing(1), display: `flex`, flexWrap: `wrap`,
                                     [theme.breakpoints.down('md')]: {
                                         display: `none`
                                     },

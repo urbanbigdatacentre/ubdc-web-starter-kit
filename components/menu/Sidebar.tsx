@@ -3,76 +3,29 @@ import React from "react";
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary, alpha,
+    AccordionSummary,
     Box,
     Button,
-    Drawer,
     Stack,
     Typography
 } from "@mui/material";
 import {useTheme} from "@mui/system";
-import MenuIcon from '@mui/icons-material/Menu';
-import {IconButton} from "@mui/material";
 import {Index} from "unist-util-visit-parents";
 import {ExpandMore} from "@mui/icons-material";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import {useRouter} from "next/router";
 import {sidebarTitle} from "@/config/appConfig";
 
-interface SidebarProps {
-    fileStructure: Object;
+export interface NavProps {
+    fileStructure?: Object | undefined;
 }
 
-const Sidebar = (props: SidebarProps) => {
+const Sidebar = (props: NavProps) => {
 
     const theme = useTheme();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
-
 
     return (
         <Box>
-            <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { md: 'none' }, position: `fixed`, top: 70, left: 25, color: theme.palette.action.active,  boxShadow: `0px 0px 15px rgba(0, 0, 0, 0.15)`, backgroundColor: theme.palette.action.hover, zIndex: 1000,
-                    '&:hover': {
-                        backgroundColor: alpha('#bbdefb', .85),
-                    }
-                }}
-            >
-                <MenuIcon />
-            </IconButton>
-            <Drawer
-                variant="temporary"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                ModalProps={{
-                    keepMounted: true, // Better open performance on mobile.
-                }}
-                PaperProps={{
-                    sx: {
-                        width: `250px !important`,
-                        paddingTop: theme.spacing(4),
-                    }
-                }}
-                sx={{
-                    display: { xs: 'block', md: 'none' },
-                    width: `200px`,
-                    backgroundColor: theme.palette.action.white,
-                    boxShadow: `0px 20px 50px rgba(0, 0, 0, 0.05)`,
-                    alignItems: `start`,
-                    justifyContent: `space-between`,
-                    boxSizing: 'border-box',
-                }}
-            >
-                <SideBarContent fileStructure={props.fileStructure} />
-            </Drawer>
             <Box sx={{minWidth: `300px`, marginRight: theme.spacing(2),
                 [theme.breakpoints.down('md')]: {
                     display: `none`
@@ -84,7 +37,7 @@ const Sidebar = (props: SidebarProps) => {
     )
 }
 
-interface FileStructureProps {
+export interface FileStructureProps {
     path: string;
     name: string;
     children: Array<{
@@ -101,7 +54,7 @@ interface FileStructureProps {
     }>;
 }
 
-const SideBarContent = (props: SidebarProps) => {
+export const SideBarContent = (props: NavProps) => {
 
             const theme = useTheme();
             const router = useRouter();
@@ -120,7 +73,7 @@ const SideBarContent = (props: SidebarProps) => {
                     </Box> : <></>}
                     <Stack sx={{display: `flex`, width: `100%`, padding: 0}}>
                         {
-                            props.fileStructure['children'].map((item: FileStructureProps, index: Index) => {
+                            props.fileStructure ? props.fileStructure['children'].map((item: FileStructureProps, index: Index) => {
                                 if (item['name'].includes('md')) {
 
                                     return (
@@ -201,7 +154,7 @@ const SideBarContent = (props: SidebarProps) => {
                                     )
                                 }
                             })
-                        }
+                        : <></> }
                     </Stack>
                 </Stack>
             )

@@ -2,12 +2,13 @@
 import {AppBar, Box, Typography, Toolbar, Avatar} from "@mui/material";
 import {useTheme} from "@mui/system";
 import Link from "next/link";
-import {useRouter} from "next/router";
 import {pathToLogo, siteTag, siteTitle} from "@/config/appConfig";
 import Search from "@/components/inputs/Search";
+import Hamburger from "@/components/menu/Hamburger";
 
 type NavbarProps = {
-    search?: boolean
+    search?: boolean,
+    fileStructure?: Object | undefined
 }
 
 const Navbar = (props: NavbarProps) => {
@@ -23,11 +24,15 @@ const Navbar = (props: NavbarProps) => {
                 {/*LEFT HAND SIDE*/}
 
                 <Box sx={{display: `flex`, alignItems: `center`, gap: theme.spacing(2)}}>
+                    <Hamburger fileStructure={props.fileStructure}/>
                     <Link href={'/'}>
                         {/*// Insert logo here*/}
                         <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
                     </Link>
-                    <Typography sx={{color: theme.palette.grey[800]}}>{siteTitle}</Typography>
+                    <Typography sx={{color: theme.palette.grey[800],
+                        [theme.breakpoints.down('md')]: {
+                            display: `none`
+                        },}}>{siteTitle}</Typography>
                     {siteTag ? <Box sx={{
                         backgroundColor: theme.palette.action.hover,
                         paddingLeft: theme.spacing(1),
@@ -45,7 +50,12 @@ const Navbar = (props: NavbarProps) => {
 
                 {/*RIGHT HAND SIDE*/}
                 <Box sx={{display: `flex`, alignItems: `center`, gap: theme.spacing(2)}}>
-                    {props.search ? <Search/> : <></>}
+                    {props.search ?
+                        <Box sx={{display: `flex`}}>
+
+                            <Search/>
+                        </Box>
+                        : <></>}
                 </Box>
 
 
