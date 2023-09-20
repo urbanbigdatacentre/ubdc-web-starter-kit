@@ -49,7 +49,7 @@ const Doc = (props : DocProps) => {
 
 
     return (
-        <BasePageComponents>
+        <BasePageComponents fileStructure={fileStructure}>
             <Head>
                 <title>{frontMatter.title}</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -61,7 +61,7 @@ const Doc = (props : DocProps) => {
             </Head>
             <StandardContainer sidebar>
                 <Sidebar fileStructure={fileStructure}/>
-                <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: {md: `calc(100% - 300px)`, sm: `100%`}, marginTop: { xs: theme.spacing(5), md: 0 },}}>
+                <Stack sx={{gap: theme.spacing(2), paddingBottom: theme.spacing(8), width: {md: `calc(100% - 300px)`, sm: `100%`}, maxWidth: `100%`}}>
 
                     <Box sx={{backgroundColor: theme.palette.action.hover, border: `1px dashed ${theme.palette.action.active}`, width: `max-content`, paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1)}}>
                         <Typography variant={'body2'} sx={{color: theme.palette.action.active, fontWeight: 500, textTransform: `capitalize`}}>{router.asPath.split('/')[2].split('#')[0]}</Typography>
@@ -73,7 +73,7 @@ const Doc = (props : DocProps) => {
                             <Typography variant={'caption'} sx={{color: theme.palette.grey[600]}}>{siteTitle}</Typography>
                             <Typography variant={'caption'} sx={{color: theme.palette.grey[900]}}>{frontMatter.author}</Typography>
                         </Box>
-                        <Box sx={{display: `flex`, gap: theme.spacing(1)}}>
+                        <Box sx={{display: `flex`, flexWrap: `wrap`, gap: theme.spacing(1)}}>
                             {
                                 frontMatter?.tags?.map((tag, index) => {
                                     return <TagBlock text={tag} key={index}/>
