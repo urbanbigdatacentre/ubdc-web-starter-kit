@@ -5,7 +5,7 @@ export const siteDescription = 'A starter kit for creating simple static documen
 export const siteKeywords = 'docs, starter, template';
 
 export const siteAuthor = 'Your Name';
-export const pathToLogo = '/ubdc-logo.png';
+export const pathToLogo = '/ubdc-logo.svg';
 export const pathToFavicon = '/favicon.ico';
 
 export const githubUrl = 'https://github.com/urbanbigdatacentre/ubdc-web-starter-kit'
