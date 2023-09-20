@@ -3,9 +3,9 @@ import React from "react";
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary,
+    AccordionSummary, Avatar,
     Box,
-    Button,
+    Button, Divider,
     Stack,
     Typography
 } from "@mui/material";
@@ -14,7 +14,8 @@ import {Index} from "unist-util-visit-parents";
 import {ExpandMore} from "@mui/icons-material";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import {useRouter} from "next/router";
-import {sidebarTitle} from "@/config/appConfig";
+import {pathToLogo, sidebarTitle, siteTitle} from "@/config/appConfig";
+import Link from "next/link";
 
 export interface NavProps {
     fileStructure?: Object | undefined;
@@ -61,17 +62,28 @@ export const SideBarContent = (props: NavProps) => {
 
 
             return (
-                <Stack sx={{ paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2), width: `100%`}}>
-                    {sidebarTitle ? <Box sx={{
-                        display: `flex`,
-                        gap: theme.spacing(1),
-                        alignItems: `center`,
-                        marginBottom: theme.spacing(2)
-                    }}>
-                        {/*<Avatar alt="Docs Icon" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>*/}
-                        <Typography variant={'h6'}>{sidebarTitle}</Typography>
-                    </Box> : <></>}
-                    <Stack sx={{display: `flex`, width: `100%`, padding: 0}}>
+                <Stack sx={{ paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2), width: `100%`, }}>
+
+                    <Stack sx={{display: `flex`, width: `100%`, padding: 0, marginTop: { xs: 2, md: 0 },}}>
+
+                        <Box sx={{display: `flex`, gap: theme.spacing(1), alignItems: `center`}}>
+                        <Link href={'/'}>
+                            {/*// Insert logo here*/}
+                            <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
+                        </Link>
+                        <Typography variant={'caption'} sx={{color: theme.palette.grey[800]}}>{siteTitle}</Typography>
+                        </Box>
+                        <Divider sx={{marginTop: theme.spacing(2), marginBottom: theme.spacing(2)}}/>
+
+                        {sidebarTitle ? <Box sx={{
+                            display: `flex`,
+                            gap: theme.spacing(1),
+                            alignItems: `center`,
+                            marginBottom: theme.spacing(2)
+                        }}>
+                            {/*<Avatar alt="Docs Icon" src="/icons/docs.svg" sx={{width: `35px`, height: `35px`}}/>*/}
+                            <Typography variant={'body2'} sx={{marginBottom: theme.spacing(2)}}>{sidebarTitle}</Typography>
+                        </Box> : <></>}
                         {
                             props.fileStructure ? props.fileStructure['children'].map((item: FileStructureProps, index: Index) => {
                                 if (item['name'].includes('md')) {

@@ -27,7 +27,11 @@ const Navbar = (props: NavbarProps) => {
                     <Hamburger fileStructure={props.fileStructure}/>
                     <Link href={'/'}>
                         {/*// Insert logo here*/}
-                        <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
+                        <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} sx={{
+                            [theme.breakpoints.down('md')]: {
+                                display: `none`
+                            },
+                        }}/>
                     </Link>
                     <Typography sx={{color: theme.palette.grey[800],
                         [theme.breakpoints.down('md')]: {
