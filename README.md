@@ -1,3 +1,5 @@
+# UBDC Starter kit - Multiple Zone Approach
+
 ---
 title: Overview
 author: andrew.c.clarke@glasgow.ac.uk
@@ -5,6 +7,13 @@ category: getting-started
 ---
 
 #### Table of Contents
+- [Introduction](#introduction)
+
+## Introduction
+
+The multiple zone approach is a software architecture pattern that allows you to divide your Next.js project into different zones or modules, each with its own set of functionalities and responsibilities. This approach promotes code modularity, maintainability, and scalability.
+
+In this project, we provide a basic template for setting up a Next.js application following the multiple zone approach. You can extend and customize it to suit your specific project requirements.
 
 # Explainer
 -------------------------
