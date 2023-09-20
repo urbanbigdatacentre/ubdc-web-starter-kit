@@ -14,11 +14,17 @@ const Search = () => {
     const [searchOpen, setSearchOpen] = React.useState(false);
 
     const handleClick = () => {
-        setSearchOpen(!searchOpen);
-        const hamburger = document.querySelector<HTMLElement>('#hamburger-button');
-        if (hamburger) {
-            hamburger.click();
+
+        const sidebarDrawer = document.querySelector<HTMLElement>('#sidebar-drawer');
+
+        if (sidebarDrawer?.style.visibility === 'hidden') {
+            const hamburger = document.querySelector<HTMLElement>('#hamburger-button');
+            if (hamburger) {
+                hamburger.click();
+            }
         }
+
+        setSearchOpen(!searchOpen);
     }
 
     return (

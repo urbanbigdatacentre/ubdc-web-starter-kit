@@ -30,6 +30,7 @@ const Hamburger = (props: NavProps) => {
                 <MenuIcon />
             </Button>
             <Drawer
+                id={'sidebar-drawer'}
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
