@@ -17,7 +17,7 @@ const Search = () => {
 
         const sidebarDrawer = document.querySelector<HTMLElement>('#sidebar-drawer');
 
-        if (sidebarDrawer?.style.visibility === 'hidden') {
+        if (!sidebarDrawer?.ariaHidden) {
             const hamburger = document.querySelector<HTMLElement>('#hamburger-button');
             if (hamburger) {
                 hamburger.click();
