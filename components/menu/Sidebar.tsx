@@ -16,6 +16,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { useRouter } from "next/router";
 import { pathToLogo, sidebarTitle, siteTitle } from "@/config/appConfig";
 import Link from "next/link";
+import { trimText } from "@/utils/trimText";
 
 export interface NavProps {
     fileStructure?: Object | undefined;
@@ -70,7 +71,7 @@ export const SideBarContent = (props: NavProps) => {
                         {/*// Insert logo here*/}
                         <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
                     </Link>
-                    <Typography variant={'caption'} sx={{ color: theme.palette.grey[800] }}>{siteTitle.slice(0, 25) + ' ...'}</Typography>
+                    <Typography variant={'caption'} sx={{ color: theme.palette.grey[800] }}>{trimText(siteTitle, 22)}</Typography>
                 </Box>
                 <Divider sx={{ marginTop: theme.spacing(2), marginBottom: theme.spacing(2) }} />
 

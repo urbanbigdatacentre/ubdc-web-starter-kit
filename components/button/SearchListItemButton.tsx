@@ -65,7 +65,7 @@ const SearchListItemButton = (props: SearchListItemButtonProps) => {
                         },
                     }}>... {removeMD(props.content)} ...</Typography>
                 </Box>
-                <Typography variant={'caption'} sx={{color: theme.palette.grey[700], fontWeight: 400, paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2)}}>Jump To</Typography>
+                <Typography variant={'caption'} sx={{ color: theme.palette.grey[700], fontWeight: 400, paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2), whiteSpace: `nowrap` }}>Jump To</Typography>
             </Box>
 
         </ListItemButton>
