@@ -64,13 +64,13 @@ export const SideBarContent = (props: NavProps) => {
 
     return (
         <Stack sx={{ paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2), width: `100%` }}>
-            <Stack sx={{ display: `flex`, width: `100%`, padding: 0 }}>
+            <Stack sx={{ display: `flex`, width: `100%`, padding: 0, marginTop: { xs: theme.spacing(6), md: 0 }, }}>
                 <Box sx={{ display: `flex`, gap: theme.spacing(1), alignItems: `center` }}>
                     <Link href={'/'}>
                         {/*// Insert logo here*/}
                         <Avatar alt={'site logo'} src={pathToLogo} variant={'square'} />
                     </Link>
-                    <Typography variant={'caption'} sx={{ color: theme.palette.grey[800] }}>{siteTitle}</Typography>
+                    <Typography variant={'caption'} sx={{ color: theme.palette.grey[800] }}>{siteTitle.slice(0, 25) + ' ...'}</Typography>
                 </Box>
                 <Divider sx={{ marginTop: theme.spacing(2), marginBottom: theme.spacing(2) }} />
 
